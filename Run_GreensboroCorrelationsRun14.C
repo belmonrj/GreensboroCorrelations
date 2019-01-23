@@ -24,7 +24,6 @@ void Run_GreensboroCorrelationsRun14(const char *outFile = "test_train_output.ro
 
   GreensboroCorrelations *sflow = new GreensboroCorrelations();
   sflow->set_output_filename(outFile);
-  sflow->set_create_ttree(true);
   sflow->set_do_double_track_cut(true);
   sflow->set_zvtxcut(10.0); // z-vertex cut in cm (default is 10)
   sflow->set_chi2cut(5.0);  // chi2/ndf cut on tracks (default is 5)

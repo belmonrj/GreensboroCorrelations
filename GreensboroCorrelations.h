@@ -10,7 +10,7 @@
 
 class dAuBES_utils;
 class TFile;
-class TTree;
+//class TTree;
 class TH1D;
 class TH2D;
 class TProfile;
@@ -35,7 +35,6 @@ class GreensboroCorrelations: public SubsysReco
   void set_output_filename(std::string filename) { _output_filename = filename; } // select output file name externally
   void SetQvectorOffsets(int runnumber);
   void SetQvectorOffsetsRBR(int runnumber);
-  void set_create_ttree(bool b){_create_ttree = b;} // ??
   void set_do_double_track_cut(bool b){do_double_track_cut = b;}
   void set_zvtxcut(double z){_cut_zvtx = z;}
   void set_chi2cut(double c){_cut_chi2 = c;}
@@ -129,32 +128,6 @@ class GreensboroCorrelations: public SubsysReco
   std::string _collsys;
 
   int tmp_evt;
-
-  bool _create_ttree;
-  // -- the tree itself
-  TTree* shorttree;
-
-  //-- ntp_event variables
-  int event;
-  float bbc_z;
-  float centrality;
-  float bbc_qn;
-  float bbc_qs;
-  int icent;
-  int npc1;
-  int nfvtxt;
-  int nfvtxt_south;
-  int nfvtxt_north;
-  int nfvtxt_raw;
-  unsigned int trigger_scaled;
-  unsigned int trigger_live;
-  float bc_x;
-  float bc_y;
-  float zvtx;
-  float vtx_z;
-  float FVTX_X;
-  float FVTX_Y;
-  float FVTX_Z;
 
   static const int nharm = 5;
   float d_SouthQX[nharm];

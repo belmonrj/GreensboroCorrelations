@@ -8,7 +8,7 @@
 #include <TOAD.h>
 #include <TMath.h>
 #include <TFile.h>
-#include <TTree.h>
+//#include <TTree.h>
 #include <TH1D.h>
 #include <TH2D.h>
 #include <TProfile.h>
@@ -56,7 +56,6 @@ GreensboroCorrelations::GreensboroCorrelations(): SubsysReco("GREENSBOROCORRELAT
 
   tmp_evt = 0;
 
-  _create_ttree = true,
 
   FVTX_X = -9999.9;
   FVTX_Y = -9999.9;
@@ -74,7 +73,6 @@ GreensboroCorrelations::GreensboroCorrelations(): SubsysReco("GREENSBOROCORRELAT
   vtx_z = -9999.9;
   zvtx = -9999.9;
 
-  shorttree = NULL;
   bbc_qn = -9999.9;
   bbc_qs = -9999.9;
   nfvtxt = 0;

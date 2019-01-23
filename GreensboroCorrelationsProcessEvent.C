@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include <TMath.h>
-#include <TTree.h>
+//#include <TTree.h>
 #include <TH1D.h>
 #include <TH2D.h>
 #include <TProfile.h>
@@ -376,8 +376,6 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
   EventStuff();
 
   if ( _verbosity > 0 ) cout << "sucessfully processed this event, number of fvtx tracks is " << nfvtxt_raw << ", number of fvtx tracks passing cuts is " << nfvtxt << endl;
-
-  if ( _create_ttree ) shorttree->Fill();
 
   ++tmp_evt;//to keep track of how many events pass event cuts
 
