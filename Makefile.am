@@ -17,6 +17,7 @@ libGreensboroCorrelations_la_SOURCES = \
   GreensboroCorrelationsInitializations.C \
   GreensboroCorrelationsProcessEvent.C \
   GreensboroCorrelationsFunctions.C \
+  GreensboroCorrelationsSpecialEventCuts.C \
   GreensboroCorrelations_Dict.C
 
 libGreensboroCorrelations_la_LIBADD = \

@@ -240,9 +240,9 @@ int GreensboroCorrelations::InitRun(PHCompositeNode *topNode)
   runnumber = rh->get_RunNumber();
 
   // --- set Q-vector offsets
-  cout << "setting Q-vector offsets..." << endl;
-  SetQvectorOffsets(runnumber);
-  SetQvectorOffsetsRBR(runnumber);
+  // cout << "setting Q-vector offsets..." << endl;
+  // SetQvectorOffsets(runnumber);
+  // SetQvectorOffsetsRBR(runnumber);
 
 
 
