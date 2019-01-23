@@ -1,9 +1,9 @@
-#include "BoulderCumulants.h"
+#include "GreensboroCorrelations.h"
 #include "TComplex.h"
 
 
 // <cos(n(phi1-phi2))>
-float BoulderCumulants::calc2_event(float Xn, float Yn, float M)
+float GreensboroCorrelations::calc2_event(float Xn, float Yn, float M)
 {
   if ( M < 2 ) return -9999;
   float numerator = Xn*Xn + Yn*Yn - M;
@@ -12,7 +12,7 @@ float BoulderCumulants::calc2_event(float Xn, float Yn, float M)
 }
 
 // <cos(n(phi1+phi2))>
-float BoulderCumulants::calccossum2_event(TComplex& Qn, TComplex& Q2n, float M)
+float GreensboroCorrelations::calccossum2_event(TComplex& Qn, TComplex& Q2n, float M)
 {
   if ( M < 2 ) return -9999;
   TComplex result = Qn*Qn - Q2n;
@@ -22,7 +22,7 @@ float BoulderCumulants::calccossum2_event(TComplex& Qn, TComplex& Q2n, float M)
 }
 
 // <sin(n(phi1+phi2))>
-float BoulderCumulants::calcsinsum2_event(TComplex& Qn, TComplex& Q2n, float M)
+float GreensboroCorrelations::calcsinsum2_event(TComplex& Qn, TComplex& Q2n, float M)
 {
   if ( M < 2 ) return -9999;
   TComplex result = Qn*Qn - Q2n;
@@ -32,7 +32,7 @@ float BoulderCumulants::calcsinsum2_event(TComplex& Qn, TComplex& Q2n, float M)
 }
 
 // <cos(n(phi1-phi2-phi3))>
-float BoulderCumulants::calccos3_event(TComplex& Qn, TComplex& Q2n, float M)
+float GreensboroCorrelations::calccos3_event(TComplex& Qn, TComplex& Q2n, float M)
 {
   if ( M < 3 ) return -9999;
   TComplex result = Qn*TComplex::Conjugate(Qn)*TComplex::Conjugate(Qn) - Qn*TComplex::Conjugate(Q2n);
@@ -42,7 +42,7 @@ float BoulderCumulants::calccos3_event(TComplex& Qn, TComplex& Q2n, float M)
 }
 
 // <sin(n(phi1-phi2-phi3))>
-float BoulderCumulants::calcsin3_event(TComplex& Qn, TComplex& Q2n, float M)
+float GreensboroCorrelations::calcsin3_event(TComplex& Qn, TComplex& Q2n, float M)
 {
   if ( M < 3 ) return -9999;
   TComplex result = Qn*TComplex::Conjugate(Qn)*TComplex::Conjugate(Qn) - Qn*TComplex::Conjugate(Q2n);
@@ -52,7 +52,7 @@ float BoulderCumulants::calcsin3_event(TComplex& Qn, TComplex& Q2n, float M)
 }
 
 // <cos(n(phi1+phi2-phi3-phi4))>
-float BoulderCumulants::calc4_event(float Xn, float Yn, float X2n, float Y2n, float M)
+float GreensboroCorrelations::calc4_event(float Xn, float Yn, float X2n, float Y2n, float M)
 {
 
   if ( M < 4 ) return -9999;
@@ -74,7 +74,7 @@ float BoulderCumulants::calc4_event(float Xn, float Yn, float X2n, float Y2n, fl
 }
 
 // <cos(n(phi1+phi2+phi3-phi4-phi5-phi6))>
-float BoulderCumulants::calc6_event(TComplex& qn, TComplex& q2n, TComplex& q3n, float M)
+float GreensboroCorrelations::calc6_event(TComplex& qn, TComplex& q2n, TComplex& q3n, float M)
 {
 
   if ( M < 6 ) return -9999;
@@ -130,12 +130,12 @@ float BoulderCumulants::calc6_event(TComplex& qn, TComplex& q2n, TComplex& q3n, 
 }
 
 // --- from generic forumulas ----------------------------------------------------
-TComplex BoulderCumulants::Recursion(int n, int* harmonic)
+TComplex GreensboroCorrelations::Recursion(int n, int* harmonic)
 {
   return Recursion(n,harmonic,1,0); // 1 and 0 are defaults from above
 }
 
-TComplex BoulderCumulants::Recursion(int n, int* harmonic, int mult, int skip)
+TComplex GreensboroCorrelations::Recursion(int n, int* harmonic, int mult, int skip)
 {
  // Calculate multi-particle correlators by using recursion (an improved faster version) originally developed by
  // Kristjan Gulbrandsen (gulbrand@nbi.dk).
@@ -172,7 +172,7 @@ TComplex BoulderCumulants::Recursion(int n, int* harmonic, int mult, int skip)
 
 }
 
-TComplex BoulderCumulants::Q(int n, int p)
+TComplex GreensboroCorrelations::Q(int n, int p)
 {
   // Using the fact that Q{-n,p} = Q{n,p}^*.
   if(n>=0){return Qvector[n][p];}
