@@ -148,15 +148,6 @@ int GreensboroCorrelations::Init(PHCompositeNode *topNode)
 
   for ( int cs = 0; cs < 2; ++cs )
     {
-      for(int c = 0; c < maxCorrelator; ++c )
-        {
-          nfvtxt_recursion[cs][c] = new TProfile(Form("nfvtxt_recursion_%d_%d",cs,c),"",700,-0.5,699.5,-1.1,1.1);
-          centrality_recursion[cs][c] = new TProfile(Form("centrality_recursion_%d_%d",cs,c),"",100,-0.5,99.5,-1.1,1.1);
-          centrality_spw_recursion[cs][c] = new TProfile(Form("centrality_spw_recursion_%d_%d",cs,c),"",100,-0.5,99.5,-1.1,1.1);
-        }
-    }
-  for ( int cs = 0; cs < 2; ++cs )
-    {
       for ( int c = 0; c < maxHarmonic; ++c )
         {
           eta_recoffsets[cs][c] = new TProfile(Form("eta_recoffsets_%d_%d",cs,c),"",700,-3.5,3.5,-1.1,1.1);

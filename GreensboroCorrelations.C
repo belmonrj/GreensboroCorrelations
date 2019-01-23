@@ -126,15 +126,6 @@ GreensboroCorrelations::GreensboroCorrelations(): SubsysReco("GREENSBOROCORRELAT
 
   for ( int cs = 0; cs < 2; ++cs )
     {
-      for ( int c = 0; c < maxCorrelator; ++c )
-        {
-          nfvtxt_recursion[cs][c] = NULL;
-          centrality_recursion[cs][c] = NULL;
-          centrality_spw_recursion[cs][c] = NULL;
-        }
-    }
-  for ( int cs = 0; cs < 2; ++cs )
-    {
       for ( int c = 0; c < maxHarmonic; ++c )
         {
           eta_recoffsets[cs][c] = NULL;
