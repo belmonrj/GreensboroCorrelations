@@ -119,39 +119,6 @@ GreensboroCorrelations::GreensboroCorrelations(): SubsysReco("GREENSBOROCORRELAT
   th2d_cent_chisq = NULL;
   tp1f_track_detacutpass = NULL;
 
-  for ( int iharm = 0; iharm < 5; ++iharm )
-    {
-      for ( int iarm = 0; iarm < 3; ++iarm )
-        {
-          centrality_ac_cumu2[iarm][iharm] = NULL;
-          centrality_ac_cumu4[iarm][iharm] = NULL;
-          centrality_ac_cumu6[iarm][iharm] = NULL;
-          centrality_ac_cumu8[iarm][iharm] = NULL;
-          centrality_os_cumu2[iarm][iharm] = NULL;
-          centrality_os_cumu4[iarm][iharm] = NULL;
-          centrality_os_cumu6[iarm][iharm] = NULL;
-          centrality_os_cumu8[iarm][iharm] = NULL;
-          centrality_ac_corr_cos1[iarm][iharm] = NULL;
-          centrality_ac_corr_sin1[iarm][iharm] = NULL;
-          centrality_ac_corr_cos2[iarm][iharm] = NULL;
-          centrality_ac_corr_sin2[iarm][iharm] = NULL;
-          centrality_ac_corr_cos3[iarm][iharm] = NULL;
-          centrality_ac_corr_sin3[iarm][iharm] = NULL;
-          centrality_os_corr_cos1[iarm][iharm] = NULL;
-          centrality_os_corr_sin1[iarm][iharm] = NULL;
-          centrality_os_corr_cos2[iarm][iharm] = NULL;
-          centrality_os_corr_sin2[iarm][iharm] = NULL;
-          centrality_os_corr_cos3[iarm][iharm] = NULL;
-          centrality_os_corr_sin3[iarm][iharm] = NULL;
-        }
-      centrality_ac_sub2[iharm] = NULL;
-      centrality_ac_sub4a[iharm] = NULL;
-      centrality_ac_sub4b[iharm] = NULL;
-      centrality_os_sub2[iharm] = NULL;
-      centrality_os_sub4a[iharm] = NULL;
-      centrality_os_sub4b[iharm] = NULL;
-    }
-
   for ( int i = 0; i < 8; ++i ) tp1f_special_fvtx_tracks_ab[i] = NULL;
   tp1f_special_fvtx_tracks_aa = NULL;
   tp1f_special_fvtx_tracks_aa_cos = NULL;

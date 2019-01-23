@@ -870,18 +870,6 @@ int GreensboroCorrelations::EventStuff()
   float ac_fvtxs_tracks_qy6 = fvtxs_tracks_qy6[0];
   float ac_fvtxs_tracks_qq2 = calc2_event(ac_fvtxs_tracks_qx2,ac_fvtxs_tracks_qy2,ac_fvtxs_tracks_qw);
   float ac_fvtxs_tracks_qq3 = calc2_event(ac_fvtxs_tracks_qx3,ac_fvtxs_tracks_qy3,ac_fvtxs_tracks_qw);
-  TComplex tc_ac_fvtxs_tracks_Q2(ac_fvtxs_tracks_qx2,ac_fvtxs_tracks_qy2);
-  TComplex tc_ac_fvtxs_tracks_Q3(ac_fvtxs_tracks_qx3,ac_fvtxs_tracks_qy3);
-  TComplex tc_ac_fvtxs_tracks_Q4(ac_fvtxs_tracks_qx4,ac_fvtxs_tracks_qy4);
-  TComplex tc_ac_fvtxs_tracks_Q6(ac_fvtxs_tracks_qx6,ac_fvtxs_tracks_qy6);
-  float ac_fvtxs_tracks_cossum22 = calccossum2_event(tc_ac_fvtxs_tracks_Q2,tc_ac_fvtxs_tracks_Q4,ac_fvtxs_tracks_qw);
-  float ac_fvtxs_tracks_sinsum22 = calcsinsum2_event(tc_ac_fvtxs_tracks_Q2,tc_ac_fvtxs_tracks_Q4,ac_fvtxs_tracks_qw);
-  float ac_fvtxs_tracks_cossum32 = calccossum2_event(tc_ac_fvtxs_tracks_Q3,tc_ac_fvtxs_tracks_Q6,ac_fvtxs_tracks_qw);
-  float ac_fvtxs_tracks_sinsum32 = calcsinsum2_event(tc_ac_fvtxs_tracks_Q3,tc_ac_fvtxs_tracks_Q6,ac_fvtxs_tracks_qw);
-  float ac_fvtxs_tracks_cos23 = calccos3_event(tc_ac_fvtxs_tracks_Q2,tc_ac_fvtxs_tracks_Q4,ac_fvtxs_tracks_qw);
-  float ac_fvtxs_tracks_sin23 = calcsin3_event(tc_ac_fvtxs_tracks_Q2,tc_ac_fvtxs_tracks_Q4,ac_fvtxs_tracks_qw);
-  float ac_fvtxs_tracks_cos33 = calccos3_event(tc_ac_fvtxs_tracks_Q3,tc_ac_fvtxs_tracks_Q6,ac_fvtxs_tracks_qw);
-  float ac_fvtxs_tracks_sin33 = calcsin3_event(tc_ac_fvtxs_tracks_Q3,tc_ac_fvtxs_tracks_Q6,ac_fvtxs_tracks_qw);
 
   // --- FVTX north
   float ac_fvtxn_tracks_qw = fvtxn_tracks_qw[0];
@@ -895,18 +883,6 @@ int GreensboroCorrelations::EventStuff()
   float ac_fvtxn_tracks_qy6 = fvtxn_tracks_qy6[0];
   float ac_fvtxn_tracks_qq2 = calc2_event(ac_fvtxn_tracks_qx2,ac_fvtxn_tracks_qy2,ac_fvtxn_tracks_qw);
   float ac_fvtxn_tracks_qq3 = calc2_event(ac_fvtxn_tracks_qx3,ac_fvtxn_tracks_qy3,ac_fvtxn_tracks_qw);
-  TComplex tc_ac_fvtxn_tracks_Q2(ac_fvtxn_tracks_qx2,ac_fvtxn_tracks_qy2);
-  TComplex tc_ac_fvtxn_tracks_Q3(ac_fvtxn_tracks_qx3,ac_fvtxn_tracks_qy3);
-  TComplex tc_ac_fvtxn_tracks_Q4(ac_fvtxn_tracks_qx4,ac_fvtxn_tracks_qy4);
-  TComplex tc_ac_fvtxn_tracks_Q6(ac_fvtxn_tracks_qx6,ac_fvtxn_tracks_qy6);
-  float ac_fvtxn_tracks_cossum22 = calccossum2_event(tc_ac_fvtxn_tracks_Q2,tc_ac_fvtxn_tracks_Q4,ac_fvtxn_tracks_qw);
-  float ac_fvtxn_tracks_sinsum22 = calcsinsum2_event(tc_ac_fvtxn_tracks_Q2,tc_ac_fvtxn_tracks_Q4,ac_fvtxn_tracks_qw);
-  float ac_fvtxn_tracks_cossum32 = calccossum2_event(tc_ac_fvtxn_tracks_Q3,tc_ac_fvtxn_tracks_Q6,ac_fvtxn_tracks_qw);
-  float ac_fvtxn_tracks_sinsum32 = calcsinsum2_event(tc_ac_fvtxn_tracks_Q3,tc_ac_fvtxn_tracks_Q6,ac_fvtxn_tracks_qw);
-  float ac_fvtxn_tracks_cos23 = calccos3_event(tc_ac_fvtxn_tracks_Q2,tc_ac_fvtxn_tracks_Q4,ac_fvtxn_tracks_qw);
-  float ac_fvtxn_tracks_sin23 = calcsin3_event(tc_ac_fvtxn_tracks_Q2,tc_ac_fvtxn_tracks_Q4,ac_fvtxn_tracks_qw);
-  float ac_fvtxn_tracks_cos33 = calccos3_event(tc_ac_fvtxn_tracks_Q3,tc_ac_fvtxn_tracks_Q6,ac_fvtxn_tracks_qw);
-  float ac_fvtxn_tracks_sin33 = calcsin3_event(tc_ac_fvtxn_tracks_Q3,tc_ac_fvtxn_tracks_Q6,ac_fvtxn_tracks_qw);
 
   // --- FVTX north and south combined
   float ac_fvtxc_tracks_qx2 = ac_fvtxs_tracks_qx2 + ac_fvtxn_tracks_qx2;
@@ -920,18 +896,6 @@ int GreensboroCorrelations::EventStuff()
   float ac_fvtxc_tracks_qw = ac_fvtxs_tracks_qw + ac_fvtxn_tracks_qw;
   float ac_fvtxc_tracks_qq2 = calc2_event(ac_fvtxc_tracks_qx2,ac_fvtxc_tracks_qy2,ac_fvtxc_tracks_qw);
   float ac_fvtxc_tracks_qq3 = calc2_event(ac_fvtxc_tracks_qx3,ac_fvtxc_tracks_qy3,ac_fvtxc_tracks_qw);
-  TComplex tc_ac_fvtxc_tracks_Q2(ac_fvtxc_tracks_qx2,ac_fvtxc_tracks_qy2);
-  TComplex tc_ac_fvtxc_tracks_Q3(ac_fvtxc_tracks_qx3,ac_fvtxc_tracks_qy3);
-  TComplex tc_ac_fvtxc_tracks_Q4(ac_fvtxc_tracks_qx4,ac_fvtxc_tracks_qy4);
-  TComplex tc_ac_fvtxc_tracks_Q6(ac_fvtxc_tracks_qx6,ac_fvtxc_tracks_qy6);
-  float ac_fvtxc_tracks_cossum22 = calccossum2_event(tc_ac_fvtxc_tracks_Q2,tc_ac_fvtxc_tracks_Q4,ac_fvtxc_tracks_qw);
-  float ac_fvtxc_tracks_sinsum22 = calcsinsum2_event(tc_ac_fvtxc_tracks_Q2,tc_ac_fvtxc_tracks_Q4,ac_fvtxc_tracks_qw);
-  float ac_fvtxc_tracks_cossum32 = calccossum2_event(tc_ac_fvtxc_tracks_Q3,tc_ac_fvtxc_tracks_Q6,ac_fvtxc_tracks_qw);
-  float ac_fvtxc_tracks_sinsum32 = calcsinsum2_event(tc_ac_fvtxc_tracks_Q3,tc_ac_fvtxc_tracks_Q6,ac_fvtxc_tracks_qw);
-  float ac_fvtxc_tracks_cos23 = calccos3_event(tc_ac_fvtxc_tracks_Q2,tc_ac_fvtxc_tracks_Q4,ac_fvtxc_tracks_qw);
-  float ac_fvtxc_tracks_sin23 = calcsin3_event(tc_ac_fvtxc_tracks_Q2,tc_ac_fvtxc_tracks_Q4,ac_fvtxc_tracks_qw);
-  float ac_fvtxc_tracks_cos33 = calccos3_event(tc_ac_fvtxc_tracks_Q3,tc_ac_fvtxc_tracks_Q6,ac_fvtxc_tracks_qw);
-  float ac_fvtxc_tracks_sin33 = calcsin3_event(tc_ac_fvtxc_tracks_Q3,tc_ac_fvtxc_tracks_Q6,ac_fvtxc_tracks_qw);
 
   // --- scalar product, fvtxs dot fvtxn
   float ac_fvtxsfvtxn_tracks_qq2 = ( (ac_fvtxs_tracks_qx2*ac_fvtxn_tracks_qx2) + (ac_fvtxs_tracks_qy2*ac_fvtxn_tracks_qy2) ) / ( ac_fvtxs_tracks_qw*ac_fvtxn_tracks_qw );
@@ -973,9 +937,6 @@ int GreensboroCorrelations::EventStuff()
   float ac_fvtxn_tracks_qqqq34 = calc4_event(ac_fvtxn_tracks_qx3,ac_fvtxn_tracks_qy3,ac_fvtxn_tracks_qx6,ac_fvtxn_tracks_qy6,ac_fvtxn_tracks_qw);
   float ac_fvtxc_tracks_qqqq34 = calc4_event(ac_fvtxc_tracks_qx3,ac_fvtxc_tracks_qy3,ac_fvtxc_tracks_qx6,ac_fvtxc_tracks_qy6,ac_fvtxc_tracks_qw);
 
-  float ac_fvtxs_tracks_six = calc6_event(tc_ac_fvtxs_tracks_Q2,tc_ac_fvtxs_tracks_Q4,tc_ac_fvtxs_tracks_Q6,ac_fvtxs_tracks_qw);
-  float ac_fvtxn_tracks_six = calc6_event(tc_ac_fvtxn_tracks_Q2,tc_ac_fvtxn_tracks_Q4,tc_ac_fvtxn_tracks_Q6,ac_fvtxn_tracks_qw);
-  float ac_fvtxc_tracks_six = calc6_event(tc_ac_fvtxc_tracks_Q2,tc_ac_fvtxc_tracks_Q4,tc_ac_fvtxc_tracks_Q6,ac_fvtxc_tracks_qw);
 
 
 
@@ -984,68 +945,12 @@ int GreensboroCorrelations::EventStuff()
   // --------------
 
   // --- south only
-  centrality_ac_cumu2[1][2]->Fill(centrality,ac_fvtxs_tracks_qq2);
-  centrality_ac_corr_cos1[1][2]->Fill(centrality,ac_fvtxs_tracks_qx2/ac_fvtxs_tracks_qw);
-  centrality_ac_corr_sin1[1][2]->Fill(centrality,ac_fvtxs_tracks_qy2/ac_fvtxs_tracks_qw);
-  centrality_ac_corr_cos2[1][2]->Fill(centrality,ac_fvtxs_tracks_cossum22);
-  centrality_ac_corr_sin2[1][2]->Fill(centrality,ac_fvtxs_tracks_sinsum22);
-  centrality_ac_corr_cos3[1][2]->Fill(centrality,ac_fvtxs_tracks_cos23);
-  centrality_ac_corr_sin3[1][2]->Fill(centrality,ac_fvtxs_tracks_sin23);
-  centrality_ac_cumu2[1][3]->Fill(centrality,ac_fvtxs_tracks_qq3);
-  centrality_ac_corr_cos1[1][3]->Fill(centrality,ac_fvtxs_tracks_qx3/ac_fvtxs_tracks_qw);
-  centrality_ac_corr_sin1[1][3]->Fill(centrality,ac_fvtxs_tracks_qy3/ac_fvtxs_tracks_qw);
-  centrality_ac_corr_cos2[1][3]->Fill(centrality,ac_fvtxs_tracks_cossum32);
-  centrality_ac_corr_sin2[1][3]->Fill(centrality,ac_fvtxs_tracks_sinsum32);
-  centrality_ac_corr_cos3[1][3]->Fill(centrality,ac_fvtxs_tracks_cos33);
-  centrality_ac_corr_sin3[1][3]->Fill(centrality,ac_fvtxs_tracks_sin33);
   // --- north only
-  centrality_ac_cumu2[2][2]->Fill(centrality,ac_fvtxn_tracks_qq2);
-  centrality_ac_corr_cos1[2][2]->Fill(centrality,ac_fvtxn_tracks_qx2/ac_fvtxn_tracks_qw);
-  centrality_ac_corr_sin1[2][2]->Fill(centrality,ac_fvtxn_tracks_qy2/ac_fvtxn_tracks_qw);
-  centrality_ac_corr_cos2[2][2]->Fill(centrality,ac_fvtxn_tracks_cossum22);
-  centrality_ac_corr_sin2[2][2]->Fill(centrality,ac_fvtxn_tracks_sinsum22);
-  centrality_ac_corr_cos3[2][2]->Fill(centrality,ac_fvtxn_tracks_cos23);
-  centrality_ac_corr_sin3[2][2]->Fill(centrality,ac_fvtxn_tracks_sin23);
-  centrality_ac_cumu2[2][3]->Fill(centrality,ac_fvtxn_tracks_qq3);
-  centrality_ac_corr_cos1[2][3]->Fill(centrality,ac_fvtxn_tracks_qx3/ac_fvtxn_tracks_qw);
-  centrality_ac_corr_sin1[2][3]->Fill(centrality,ac_fvtxn_tracks_qy3/ac_fvtxn_tracks_qw);
-  centrality_ac_corr_cos2[2][3]->Fill(centrality,ac_fvtxn_tracks_cossum32);
-  centrality_ac_corr_sin2[2][3]->Fill(centrality,ac_fvtxn_tracks_sinsum32);
-  centrality_ac_corr_cos3[2][3]->Fill(centrality,ac_fvtxn_tracks_cos33);
-  centrality_ac_corr_sin3[2][3]->Fill(centrality,ac_fvtxn_tracks_sin33);
   // --- combined
-  centrality_ac_cumu2[0][2]->Fill(centrality,ac_fvtxc_tracks_qq2);
-  centrality_ac_corr_cos1[0][2]->Fill(centrality,ac_fvtxc_tracks_qx2/ac_fvtxc_tracks_qw);
-  centrality_ac_corr_sin1[0][2]->Fill(centrality,ac_fvtxc_tracks_qy2/ac_fvtxc_tracks_qw);
-  centrality_ac_corr_cos2[0][2]->Fill(centrality,ac_fvtxc_tracks_cossum22);
-  centrality_ac_corr_sin2[0][2]->Fill(centrality,ac_fvtxc_tracks_sinsum22);
-  centrality_ac_corr_cos3[0][2]->Fill(centrality,ac_fvtxc_tracks_cos23);
-  centrality_ac_corr_sin3[0][2]->Fill(centrality,ac_fvtxc_tracks_sin23);
-  centrality_ac_cumu2[0][3]->Fill(centrality,ac_fvtxc_tracks_qq3);
-  centrality_ac_corr_cos1[0][3]->Fill(centrality,ac_fvtxc_tracks_qx3/ac_fvtxc_tracks_qw);
-  centrality_ac_corr_sin1[0][3]->Fill(centrality,ac_fvtxc_tracks_qy3/ac_fvtxc_tracks_qw);
-  centrality_ac_corr_cos2[0][3]->Fill(centrality,ac_fvtxc_tracks_cossum32);
-  centrality_ac_corr_sin2[0][3]->Fill(centrality,ac_fvtxc_tracks_sinsum32);
-  centrality_ac_corr_cos3[0][3]->Fill(centrality,ac_fvtxc_tracks_cos33);
-  centrality_ac_corr_sin3[0][3]->Fill(centrality,ac_fvtxc_tracks_sin33);
   // --- scalar product
-  centrality_ac_sub2[2]->Fill(centrality,ac_fvtxsfvtxn_tracks_qq2);
-  centrality_ac_sub2[3]->Fill(centrality,ac_fvtxsfvtxn_tracks_qq3);
   // --- four particle
-  centrality_ac_cumu4[0][2]->Fill(centrality,ac_fvtxc_tracks_qqqq24);
-  centrality_ac_cumu4[0][3]->Fill(centrality,ac_fvtxc_tracks_qqqq34);
-  centrality_ac_cumu4[1][2]->Fill(centrality,ac_fvtxs_tracks_qqqq24);
-  centrality_ac_cumu4[1][3]->Fill(centrality,ac_fvtxs_tracks_qqqq34);
-  centrality_ac_cumu4[2][2]->Fill(centrality,ac_fvtxn_tracks_qqqq24);
-  centrality_ac_cumu4[2][3]->Fill(centrality,ac_fvtxn_tracks_qqqq34);
   // --- four particle 2sub
-  centrality_ac_sub4a[2]->Fill(centrality,answer_c24a);
-  centrality_ac_sub4b[2]->Fill(centrality,ac_fvtxs_tracks_qq2*ac_fvtxn_tracks_qq2);
-  centrality_ac_sub4a[3]->Fill(centrality,answer_c34a);
-  centrality_ac_sub4b[3]->Fill(centrality,ac_fvtxs_tracks_qq3*ac_fvtxn_tracks_qq3);
   // --- six particle
-  centrality_ac_cumu6[0][2]->Fill(centrality,ac_fvtxc_tracks_six);
-  //centrality_ac_cumu8[0][2]->Fill(centrality,eightRecursion.Re());
 
   if ( _verbosity > 2 )
     {
@@ -1082,18 +987,6 @@ int GreensboroCorrelations::EventStuff()
   float os_fvtxs_tracks_qy6 = fvtxs_tracks_qy6[0] - qvoff_cent_south[icent][1][6]*os_fvtxs_tracks_qw;
   float os_fvtxs_tracks_qq2 = calc2_event(os_fvtxs_tracks_qx2,os_fvtxs_tracks_qy2,os_fvtxs_tracks_qw);
   float os_fvtxs_tracks_qq3 = calc2_event(os_fvtxs_tracks_qx3,os_fvtxs_tracks_qy3,os_fvtxs_tracks_qw);
-  TComplex tc_os_fvtxs_tracks_Q2(os_fvtxs_tracks_qx2,os_fvtxs_tracks_qy2);
-  TComplex tc_os_fvtxs_tracks_Q3(os_fvtxs_tracks_qx3,os_fvtxs_tracks_qy3);
-  TComplex tc_os_fvtxs_tracks_Q4(os_fvtxs_tracks_qx4,os_fvtxs_tracks_qy4);
-  TComplex tc_os_fvtxs_tracks_Q6(os_fvtxs_tracks_qx6,os_fvtxs_tracks_qy6);
-  float os_fvtxs_tracks_cossum22 = calccossum2_event(tc_os_fvtxs_tracks_Q2,tc_os_fvtxs_tracks_Q4,os_fvtxs_tracks_qw);
-  float os_fvtxs_tracks_sinsum22 = calcsinsum2_event(tc_os_fvtxs_tracks_Q2,tc_os_fvtxs_tracks_Q4,os_fvtxs_tracks_qw);
-  float os_fvtxs_tracks_cossum32 = calccossum2_event(tc_os_fvtxs_tracks_Q3,tc_os_fvtxs_tracks_Q6,os_fvtxs_tracks_qw);
-  float os_fvtxs_tracks_sinsum32 = calcsinsum2_event(tc_os_fvtxs_tracks_Q3,tc_os_fvtxs_tracks_Q6,os_fvtxs_tracks_qw);
-  float os_fvtxs_tracks_cos23 = calccos3_event(tc_os_fvtxs_tracks_Q2,tc_os_fvtxs_tracks_Q4,os_fvtxs_tracks_qw);
-  float os_fvtxs_tracks_sin23 = calcsin3_event(tc_os_fvtxs_tracks_Q2,tc_os_fvtxs_tracks_Q4,os_fvtxs_tracks_qw);
-  float os_fvtxs_tracks_cos33 = calccos3_event(tc_os_fvtxs_tracks_Q3,tc_os_fvtxs_tracks_Q6,os_fvtxs_tracks_qw);
-  float os_fvtxs_tracks_sin33 = calcsin3_event(tc_os_fvtxs_tracks_Q3,tc_os_fvtxs_tracks_Q6,os_fvtxs_tracks_qw);
 
   // --- FVTX north
   float os_fvtxn_tracks_qw = fvtxn_tracks_qw[0];
@@ -1115,18 +1008,6 @@ int GreensboroCorrelations::EventStuff()
   float os_fvtxn_tracks_qy6 = fvtxn_tracks_qy6[0] - qvoff_cent_north[icent][1][6]*os_fvtxn_tracks_qw;
   float os_fvtxn_tracks_qq2 = calc2_event(os_fvtxn_tracks_qx2,os_fvtxn_tracks_qy2,os_fvtxn_tracks_qw);
   float os_fvtxn_tracks_qq3 = calc2_event(os_fvtxn_tracks_qx3,os_fvtxn_tracks_qy3,os_fvtxn_tracks_qw);
-  TComplex tc_os_fvtxn_tracks_Q2(os_fvtxn_tracks_qx2,os_fvtxn_tracks_qy2);
-  TComplex tc_os_fvtxn_tracks_Q3(os_fvtxn_tracks_qx3,os_fvtxn_tracks_qy3);
-  TComplex tc_os_fvtxn_tracks_Q4(os_fvtxn_tracks_qx4,os_fvtxn_tracks_qy4);
-  TComplex tc_os_fvtxn_tracks_Q6(os_fvtxn_tracks_qx6,os_fvtxn_tracks_qy6);
-  float os_fvtxn_tracks_cossum22 = calccossum2_event(tc_os_fvtxn_tracks_Q2,tc_os_fvtxn_tracks_Q4,os_fvtxn_tracks_qw);
-  float os_fvtxn_tracks_sinsum22 = calcsinsum2_event(tc_os_fvtxn_tracks_Q2,tc_os_fvtxn_tracks_Q4,os_fvtxn_tracks_qw);
-  float os_fvtxn_tracks_cossum32 = calccossum2_event(tc_os_fvtxn_tracks_Q3,tc_os_fvtxn_tracks_Q6,os_fvtxn_tracks_qw);
-  float os_fvtxn_tracks_sinsum32 = calcsinsum2_event(tc_os_fvtxn_tracks_Q3,tc_os_fvtxn_tracks_Q6,os_fvtxn_tracks_qw);
-  float os_fvtxn_tracks_cos23 = calccos3_event(tc_os_fvtxn_tracks_Q2,tc_os_fvtxn_tracks_Q4,os_fvtxn_tracks_qw);
-  float os_fvtxn_tracks_sin23 = calcsin3_event(tc_os_fvtxn_tracks_Q2,tc_os_fvtxn_tracks_Q4,os_fvtxn_tracks_qw);
-  float os_fvtxn_tracks_cos33 = calccos3_event(tc_os_fvtxn_tracks_Q3,tc_os_fvtxn_tracks_Q6,os_fvtxn_tracks_qw);
-  float os_fvtxn_tracks_sin33 = calcsin3_event(tc_os_fvtxn_tracks_Q3,tc_os_fvtxn_tracks_Q6,os_fvtxn_tracks_qw);
 
   // --- FVTX north and south combined
   float os_fvtxc_tracks_qx2 = os_fvtxs_tracks_qx2 + os_fvtxn_tracks_qx2;
@@ -1140,18 +1021,6 @@ int GreensboroCorrelations::EventStuff()
   float os_fvtxc_tracks_qw = os_fvtxs_tracks_qw + os_fvtxn_tracks_qw;
   float os_fvtxc_tracks_qq2 = calc2_event(os_fvtxc_tracks_qx2,os_fvtxc_tracks_qy2,os_fvtxc_tracks_qw);
   float os_fvtxc_tracks_qq3 = calc2_event(os_fvtxc_tracks_qx3,os_fvtxc_tracks_qy3,os_fvtxc_tracks_qw);
-  TComplex tc_os_fvtxc_tracks_Q2(os_fvtxc_tracks_qx2,os_fvtxc_tracks_qy2);
-  TComplex tc_os_fvtxc_tracks_Q3(os_fvtxc_tracks_qx4,os_fvtxc_tracks_qy3);
-  TComplex tc_os_fvtxc_tracks_Q4(os_fvtxc_tracks_qx4,os_fvtxc_tracks_qy4);
-  TComplex tc_os_fvtxc_tracks_Q6(os_fvtxc_tracks_qx6,os_fvtxc_tracks_qy6);
-  float os_fvtxc_tracks_cossum22 = calccossum2_event(tc_os_fvtxc_tracks_Q2,tc_os_fvtxc_tracks_Q4,os_fvtxc_tracks_qw);
-  float os_fvtxc_tracks_sinsum22 = calcsinsum2_event(tc_os_fvtxc_tracks_Q2,tc_os_fvtxc_tracks_Q4,os_fvtxc_tracks_qw);
-  float os_fvtxc_tracks_cossum32 = calccossum2_event(tc_os_fvtxc_tracks_Q3,tc_os_fvtxc_tracks_Q6,os_fvtxc_tracks_qw);
-  float os_fvtxc_tracks_sinsum32 = calcsinsum2_event(tc_os_fvtxc_tracks_Q3,tc_os_fvtxc_tracks_Q6,os_fvtxc_tracks_qw);
-  float os_fvtxc_tracks_cos23 = calccos3_event(tc_os_fvtxc_tracks_Q2,tc_os_fvtxc_tracks_Q4,os_fvtxc_tracks_qw);
-  float os_fvtxc_tracks_sin23 = calcsin3_event(tc_os_fvtxc_tracks_Q2,tc_os_fvtxc_tracks_Q4,os_fvtxc_tracks_qw);
-  float os_fvtxc_tracks_cos33 = calccos3_event(tc_os_fvtxc_tracks_Q3,tc_os_fvtxc_tracks_Q6,os_fvtxc_tracks_qw);
-  float os_fvtxc_tracks_sin33 = calcsin3_event(tc_os_fvtxc_tracks_Q3,tc_os_fvtxc_tracks_Q6,os_fvtxc_tracks_qw);
 
   // --- scalar product, fvtxs dot fvtxn
   float os_fvtxsfvtxn_tracks_qq2 = ( (os_fvtxs_tracks_qx2*os_fvtxn_tracks_qx2) + (os_fvtxs_tracks_qy2*os_fvtxn_tracks_qy2) ) / ( os_fvtxs_tracks_qw*os_fvtxn_tracks_qw );
@@ -1193,9 +1062,6 @@ int GreensboroCorrelations::EventStuff()
   denominator = tcaw*tcbw;
   answer_c34a = numerator/denominator;
 
-  float os_fvtxs_tracks_six = calc6_event(tc_os_fvtxs_tracks_Q2,tc_os_fvtxs_tracks_Q4,tc_os_fvtxs_tracks_Q6,os_fvtxs_tracks_qw);
-  float os_fvtxn_tracks_six = calc6_event(tc_os_fvtxn_tracks_Q2,tc_os_fvtxn_tracks_Q4,tc_os_fvtxn_tracks_Q6,os_fvtxn_tracks_qw);
-  float os_fvtxc_tracks_six = calc6_event(tc_os_fvtxc_tracks_Q2,tc_os_fvtxc_tracks_Q4,tc_os_fvtxc_tracks_Q6,os_fvtxc_tracks_qw);
 
   if ( _verbosity > 2 )
     {
@@ -1216,44 +1082,12 @@ int GreensboroCorrelations::EventStuff()
   // --------------
 
   // --- south only
-  centrality_os_cumu2[1][2]->Fill(centrality,os_fvtxs_tracks_qq2);
-  centrality_os_cumu2[1][3]->Fill(centrality,os_fvtxs_tracks_qq3);
   // --- north only
-  centrality_os_cumu2[2][2]->Fill(centrality,os_fvtxn_tracks_qq2);
-  centrality_os_cumu2[2][3]->Fill(centrality,os_fvtxn_tracks_qq3);
   // --- combined
-  centrality_os_cumu2[0][2]->Fill(centrality,os_fvtxc_tracks_qq2);
-  centrality_os_corr_cos1[0][2]->Fill(centrality,os_fvtxc_tracks_qx2/os_fvtxc_tracks_qw);
-  centrality_os_corr_sin1[0][2]->Fill(centrality,os_fvtxc_tracks_qy2/os_fvtxc_tracks_qw);
-  centrality_os_corr_cos2[0][2]->Fill(centrality,os_fvtxc_tracks_cossum22);
-  centrality_os_corr_sin2[0][2]->Fill(centrality,os_fvtxc_tracks_sinsum22);
-  centrality_os_corr_cos3[0][2]->Fill(centrality,os_fvtxc_tracks_cos23);
-  centrality_os_corr_sin3[0][2]->Fill(centrality,os_fvtxc_tracks_sin23);
-  centrality_os_cumu2[0][3]->Fill(centrality,os_fvtxc_tracks_qq3);
-  centrality_os_corr_cos1[0][3]->Fill(centrality,os_fvtxc_tracks_qx3/os_fvtxc_tracks_qw);
-  centrality_os_corr_sin1[0][3]->Fill(centrality,os_fvtxc_tracks_qy3/os_fvtxc_tracks_qw);
-  centrality_os_corr_cos2[0][3]->Fill(centrality,os_fvtxc_tracks_cossum32);
-  centrality_os_corr_sin2[0][3]->Fill(centrality,os_fvtxc_tracks_sinsum32);
-  centrality_os_corr_cos3[0][3]->Fill(centrality,os_fvtxc_tracks_cos33);
-  centrality_os_corr_sin3[0][3]->Fill(centrality,os_fvtxc_tracks_sin33);
   // --- scalar product
-  centrality_os_sub2[2]->Fill(centrality,os_fvtxsfvtxn_tracks_qq2);
-  centrality_os_sub2[3]->Fill(centrality,os_fvtxsfvtxn_tracks_qq3);
   // --- four particle
-  centrality_os_cumu4[0][2]->Fill(centrality,os_fvtxc_tracks_qqqq24);
-  centrality_os_cumu4[0][3]->Fill(centrality,os_fvtxc_tracks_qqqq34);
-  centrality_os_cumu4[1][2]->Fill(centrality,os_fvtxs_tracks_qqqq24);
-  centrality_os_cumu4[1][3]->Fill(centrality,os_fvtxs_tracks_qqqq34);
-  centrality_os_cumu4[2][2]->Fill(centrality,os_fvtxn_tracks_qqqq24);
-  centrality_os_cumu4[2][3]->Fill(centrality,os_fvtxn_tracks_qqqq34);
   // --- four particle 2sub
-  centrality_os_sub4a[2]->Fill(centrality,answer_c24a);
-  centrality_os_sub4b[2]->Fill(centrality,os_fvtxs_tracks_qq2*os_fvtxn_tracks_qq2);
-  centrality_os_sub4a[3]->Fill(centrality,answer_c34a);
-  centrality_os_sub4b[3]->Fill(centrality,os_fvtxs_tracks_qq3*os_fvtxn_tracks_qq3);
   // --- six particle
-  centrality_os_cumu6[0][2]->Fill(centrality,os_fvtxc_tracks_six);
-  //centrality_os_cumu8[0][2]->Fill(centrality,eightRecursion.Re());
 
   if ( _verbosity > 1000 )
     {
