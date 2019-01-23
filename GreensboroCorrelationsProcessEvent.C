@@ -859,83 +859,30 @@ int GreensboroCorrelations::EventStuff()
   if ( _verbosity > 1 ) cout << "doing cumulant calculations and filling histograms" << endl;
 
   // --- FVTX south
-  float ac_fvtxs_tracks_qw = fvtxs_tracks_qw[0];
-  float ac_fvtxs_tracks_qx2 = fvtxs_tracks_qx2[0];
-  float ac_fvtxs_tracks_qy2 = fvtxs_tracks_qy2[0];
-  float ac_fvtxs_tracks_qx3 = fvtxs_tracks_qx3[0];
-  float ac_fvtxs_tracks_qy3 = fvtxs_tracks_qy3[0];
-  float ac_fvtxs_tracks_qx4 = fvtxs_tracks_qx4[0];
-  float ac_fvtxs_tracks_qy4 = fvtxs_tracks_qy4[0];
-  float ac_fvtxs_tracks_qx6 = fvtxs_tracks_qx6[0];
-  float ac_fvtxs_tracks_qy6 = fvtxs_tracks_qy6[0];
-  float ac_fvtxs_tracks_qq2 = calc2_event(ac_fvtxs_tracks_qx2,ac_fvtxs_tracks_qy2,ac_fvtxs_tracks_qw);
-  float ac_fvtxs_tracks_qq3 = calc2_event(ac_fvtxs_tracks_qx3,ac_fvtxs_tracks_qy3,ac_fvtxs_tracks_qw);
 
   // --- FVTX north
-  float ac_fvtxn_tracks_qw = fvtxn_tracks_qw[0];
-  float ac_fvtxn_tracks_qx2 = fvtxn_tracks_qx2[0];
-  float ac_fvtxn_tracks_qy2 = fvtxn_tracks_qy2[0];
-  float ac_fvtxn_tracks_qx3 = fvtxn_tracks_qx3[0];
-  float ac_fvtxn_tracks_qy3 = fvtxn_tracks_qy3[0];
-  float ac_fvtxn_tracks_qx4 = fvtxn_tracks_qx4[0];
-  float ac_fvtxn_tracks_qy4 = fvtxn_tracks_qy4[0];
-  float ac_fvtxn_tracks_qx6 = fvtxn_tracks_qx6[0];
-  float ac_fvtxn_tracks_qy6 = fvtxn_tracks_qy6[0];
-  float ac_fvtxn_tracks_qq2 = calc2_event(ac_fvtxn_tracks_qx2,ac_fvtxn_tracks_qy2,ac_fvtxn_tracks_qw);
-  float ac_fvtxn_tracks_qq3 = calc2_event(ac_fvtxn_tracks_qx3,ac_fvtxn_tracks_qy3,ac_fvtxn_tracks_qw);
 
   // --- FVTX north and south combined
-  float ac_fvtxc_tracks_qx2 = ac_fvtxs_tracks_qx2 + ac_fvtxn_tracks_qx2;
-  float ac_fvtxc_tracks_qy2 = ac_fvtxs_tracks_qy2 + ac_fvtxn_tracks_qy2;
-  float ac_fvtxc_tracks_qx3 = ac_fvtxs_tracks_qx3 + ac_fvtxn_tracks_qx3;
-  float ac_fvtxc_tracks_qy3 = ac_fvtxs_tracks_qy3 + ac_fvtxn_tracks_qy3;
-  float ac_fvtxc_tracks_qx4 = ac_fvtxs_tracks_qx4 + ac_fvtxn_tracks_qx4;
-  float ac_fvtxc_tracks_qy4 = ac_fvtxs_tracks_qy4 + ac_fvtxn_tracks_qy4;
-  float ac_fvtxc_tracks_qx6 = ac_fvtxs_tracks_qx6 + ac_fvtxn_tracks_qx6;
-  float ac_fvtxc_tracks_qy6 = ac_fvtxs_tracks_qy6 + ac_fvtxn_tracks_qy6;
-  float ac_fvtxc_tracks_qw = ac_fvtxs_tracks_qw + ac_fvtxn_tracks_qw;
-  float ac_fvtxc_tracks_qq2 = calc2_event(ac_fvtxc_tracks_qx2,ac_fvtxc_tracks_qy2,ac_fvtxc_tracks_qw);
-  float ac_fvtxc_tracks_qq3 = calc2_event(ac_fvtxc_tracks_qx3,ac_fvtxc_tracks_qy3,ac_fvtxc_tracks_qw);
 
   // --- scalar product, fvtxs dot fvtxn
-  float ac_fvtxsfvtxn_tracks_qq2 = ( (ac_fvtxs_tracks_qx2*ac_fvtxn_tracks_qx2) + (ac_fvtxs_tracks_qy2*ac_fvtxn_tracks_qy2) ) / ( ac_fvtxs_tracks_qw*ac_fvtxn_tracks_qw );
-  float ac_fvtxsfvtxn_tracks_qq3 = ( (ac_fvtxs_tracks_qx3*ac_fvtxn_tracks_qx3) + (ac_fvtxs_tracks_qy3*ac_fvtxn_tracks_qy3) ) / ( ac_fvtxs_tracks_qw*ac_fvtxn_tracks_qw );
 
   // --- now have a look at some 4 particle cumulants
   // --- calc4_event has the protection/requirement on the minimum number of tracks
-  float ac_fvtxs_tracks_qqqq24 = calc4_event(ac_fvtxs_tracks_qx2,ac_fvtxs_tracks_qy2,ac_fvtxs_tracks_qx4,ac_fvtxs_tracks_qy4,ac_fvtxs_tracks_qw);
-  float ac_fvtxn_tracks_qqqq24 = calc4_event(ac_fvtxn_tracks_qx2,ac_fvtxn_tracks_qy2,ac_fvtxn_tracks_qx4,ac_fvtxn_tracks_qy4,ac_fvtxn_tracks_qw);
-  float ac_fvtxc_tracks_qqqq24 = calc4_event(ac_fvtxc_tracks_qx2,ac_fvtxc_tracks_qy2,ac_fvtxc_tracks_qx4,ac_fvtxc_tracks_qy4,ac_fvtxc_tracks_qw);
   // --- four particle 2sub
-  TComplex tca2 = TComplex(ac_fvtxs_tracks_qx2,ac_fvtxs_tracks_qy2);
-  TComplex tcb2 = TComplex(ac_fvtxn_tracks_qx2,ac_fvtxn_tracks_qy2);
-  TComplex tca4 = TComplex(ac_fvtxs_tracks_qx4,ac_fvtxs_tracks_qy4);
-  TComplex tcb4 = TComplex(ac_fvtxn_tracks_qx4,ac_fvtxn_tracks_qy4);
   TComplex tc_numerator_a = tca2*tca2 - tca4;
   TComplex tc_numerator_b = TComplex::Conjugate(tcb2*tcb2 - tcb4);
   TComplex tc_numerator = tc_numerator_a*tc_numerator_b;
   double numerator = tc_numerator.Re();
-  double tcaw = ac_fvtxs_tracks_qw*ac_fvtxs_tracks_qw - ac_fvtxs_tracks_qw;
-  double tcbw = ac_fvtxn_tracks_qw*ac_fvtxn_tracks_qw - ac_fvtxn_tracks_qw;
   double denominator = tcaw*tcbw;
   double answer_c24a = numerator/denominator;
   // --- four particle 2sub, 3rd harmonic
-  TComplex tca3 = TComplex(ac_fvtxs_tracks_qx3,ac_fvtxs_tracks_qy3);
-  TComplex tcb3 = TComplex(ac_fvtxn_tracks_qx3,ac_fvtxn_tracks_qy3);
-  TComplex tca6 = TComplex(ac_fvtxs_tracks_qx6,ac_fvtxs_tracks_qy6);
-  TComplex tcb6 = TComplex(ac_fvtxn_tracks_qx6,ac_fvtxn_tracks_qy6);
   tc_numerator_a = tca3*tca3 - tca6;
   tc_numerator_b = TComplex::Conjugate(tcb3*tcb3 - tcb6);
   tc_numerator = tc_numerator_a*tc_numerator_b;
   numerator = tc_numerator.Re();
-  tcaw = ac_fvtxs_tracks_qw*ac_fvtxs_tracks_qw - ac_fvtxs_tracks_qw;
-  tcbw = ac_fvtxn_tracks_qw*ac_fvtxn_tracks_qw - ac_fvtxn_tracks_qw;
   denominator = tcaw*tcbw;
   double answer_c34a = numerator/denominator;
 
-  float ac_fvtxs_tracks_qqqq34 = calc4_event(ac_fvtxs_tracks_qx3,ac_fvtxs_tracks_qy3,ac_fvtxs_tracks_qx6,ac_fvtxs_tracks_qy6,ac_fvtxs_tracks_qw);
-  float ac_fvtxn_tracks_qqqq34 = calc4_event(ac_fvtxn_tracks_qx3,ac_fvtxn_tracks_qy3,ac_fvtxn_tracks_qx6,ac_fvtxn_tracks_qy6,ac_fvtxn_tracks_qw);
-  float ac_fvtxc_tracks_qqqq34 = calc4_event(ac_fvtxc_tracks_qx3,ac_fvtxc_tracks_qy3,ac_fvtxc_tracks_qx6,ac_fvtxc_tracks_qy6,ac_fvtxc_tracks_qw);
 
 
 
@@ -954,12 +901,6 @@ int GreensboroCorrelations::EventStuff()
 
   if ( _verbosity > 2 )
     {
-      cout << "Mcos2phi " << ac_fvtxc_tracks_qx2 << " " << Qvector[2][1].Re()  << endl;
-      cout << "Msin2phi " << ac_fvtxc_tracks_qy2 << " " << Qvector[2][1].Im()  << endl;
-      cout << "M        " << ac_fvtxc_tracks_qw  << " " << Qvector[0][1].Re() << endl;
-      // cout << "2 " << ac_fvtxc_tracks_qq2    << " " <<  twoRecursion.Re() << endl;
-      // cout << "4 " << ac_fvtxc_tracks_qqqq24 << " " << fourRecursion.Re() << endl;
-      // cout << "6 " << ac_fvtxc_tracks_six    << " " <<  sixRecursion.Re() << endl;
     }
 
   // ------------------------------------------------------------------------------------- //
@@ -968,109 +909,33 @@ int GreensboroCorrelations::EventStuff()
 
   // ---
   // --- FVTX south
-  float os_fvtxs_tracks_qw = fvtxs_tracks_qw[0];
-  // float os_fvtxs_tracks_qx2 = fvtxs_tracks_qx2[0] - qvoff_nfvtxt_south[nfvtxt][0][2]*os_fvtxs_tracks_qw;
-  // float os_fvtxs_tracks_qy2 = fvtxs_tracks_qy2[0] - qvoff_nfvtxt_south[nfvtxt][1][2]*os_fvtxs_tracks_qw;
-  // float os_fvtxs_tracks_qx3 = fvtxs_tracks_qx3[0] - qvoff_nfvtxt_south[nfvtxt][0][3]*os_fvtxs_tracks_qw;
-  // float os_fvtxs_tracks_qy3 = fvtxs_tracks_qy3[0] - qvoff_nfvtxt_south[nfvtxt][1][3]*os_fvtxs_tracks_qw;
-  // float os_fvtxs_tracks_qx4 = fvtxs_tracks_qx4[0] - qvoff_nfvtxt_south[nfvtxt][0][4]*os_fvtxs_tracks_qw;
-  // float os_fvtxs_tracks_qy4 = fvtxs_tracks_qy4[0] - qvoff_nfvtxt_south[nfvtxt][1][4]*os_fvtxs_tracks_qw;
-  // float os_fvtxs_tracks_qx6 = fvtxs_tracks_qx6[0] - qvoff_nfvtxt_south[nfvtxt][0][6]*os_fvtxs_tracks_qw;
-  // float os_fvtxs_tracks_qy6 = fvtxs_tracks_qy6[0] - qvoff_nfvtxt_south[nfvtxt][1][6]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qx2 = fvtxs_tracks_qx2[0] - qvoff_cent_south[icent][0][2]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qy2 = fvtxs_tracks_qy2[0] - qvoff_cent_south[icent][1][2]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qx3 = fvtxs_tracks_qx3[0] - qvoff_cent_south[icent][0][3]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qy3 = fvtxs_tracks_qy3[0] - qvoff_cent_south[icent][1][3]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qx4 = fvtxs_tracks_qx4[0] - qvoff_cent_south[icent][0][4]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qy4 = fvtxs_tracks_qy4[0] - qvoff_cent_south[icent][1][4]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qx6 = fvtxs_tracks_qx6[0] - qvoff_cent_south[icent][0][6]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qy6 = fvtxs_tracks_qy6[0] - qvoff_cent_south[icent][1][6]*os_fvtxs_tracks_qw;
-  float os_fvtxs_tracks_qq2 = calc2_event(os_fvtxs_tracks_qx2,os_fvtxs_tracks_qy2,os_fvtxs_tracks_qw);
-  float os_fvtxs_tracks_qq3 = calc2_event(os_fvtxs_tracks_qx3,os_fvtxs_tracks_qy3,os_fvtxs_tracks_qw);
 
   // --- FVTX north
-  float os_fvtxn_tracks_qw = fvtxn_tracks_qw[0];
-  // float os_fvtxn_tracks_qx2 = fvtxn_tracks_qx2[0] - qvoff_nfvtxt_north[nfvtxt][0][2]*os_fvtxn_tracks_qw;
-  // float os_fvtxn_tracks_qy2 = fvtxn_tracks_qy2[0] - qvoff_nfvtxt_north[nfvtxt][1][2]*os_fvtxn_tracks_qw;
-  // float os_fvtxn_tracks_qx3 = fvtxn_tracks_qx3[0] - qvoff_nfvtxt_north[nfvtxt][0][3]*os_fvtxn_tracks_qw;
-  // float os_fvtxn_tracks_qy3 = fvtxn_tracks_qy3[0] - qvoff_nfvtxt_north[nfvtxt][1][3]*os_fvtxn_tracks_qw;
-  // float os_fvtxn_tracks_qx4 = fvtxn_tracks_qx4[0] - qvoff_nfvtxt_north[nfvtxt][0][4]*os_fvtxn_tracks_qw;
-  // float os_fvtxn_tracks_qy4 = fvtxn_tracks_qy4[0] - qvoff_nfvtxt_north[nfvtxt][1][4]*os_fvtxn_tracks_qw;
-  // float os_fvtxn_tracks_qx6 = fvtxn_tracks_qx6[0] - qvoff_nfvtxt_north[nfvtxt][0][6]*os_fvtxn_tracks_qw;
-  // float os_fvtxn_tracks_qy6 = fvtxn_tracks_qy6[0] - qvoff_nfvtxt_north[nfvtxt][1][6]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qx2 = fvtxn_tracks_qx2[0] - qvoff_cent_north[icent][0][2]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qy2 = fvtxn_tracks_qy2[0] - qvoff_cent_north[icent][1][2]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qx3 = fvtxn_tracks_qx3[0] - qvoff_cent_north[icent][0][3]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qy3 = fvtxn_tracks_qy3[0] - qvoff_cent_north[icent][1][3]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qx4 = fvtxn_tracks_qx4[0] - qvoff_cent_north[icent][0][4]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qy4 = fvtxn_tracks_qy4[0] - qvoff_cent_north[icent][1][4]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qx6 = fvtxn_tracks_qx6[0] - qvoff_cent_north[icent][0][6]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qy6 = fvtxn_tracks_qy6[0] - qvoff_cent_north[icent][1][6]*os_fvtxn_tracks_qw;
-  float os_fvtxn_tracks_qq2 = calc2_event(os_fvtxn_tracks_qx2,os_fvtxn_tracks_qy2,os_fvtxn_tracks_qw);
-  float os_fvtxn_tracks_qq3 = calc2_event(os_fvtxn_tracks_qx3,os_fvtxn_tracks_qy3,os_fvtxn_tracks_qw);
 
   // --- FVTX north and south combined
-  float os_fvtxc_tracks_qx2 = os_fvtxs_tracks_qx2 + os_fvtxn_tracks_qx2;
-  float os_fvtxc_tracks_qy2 = os_fvtxs_tracks_qy2 + os_fvtxn_tracks_qy2;
-  float os_fvtxc_tracks_qx3 = os_fvtxs_tracks_qx3 + os_fvtxn_tracks_qx3;
-  float os_fvtxc_tracks_qy3 = os_fvtxs_tracks_qy3 + os_fvtxn_tracks_qy3;
-  float os_fvtxc_tracks_qx4 = os_fvtxs_tracks_qx4 + os_fvtxn_tracks_qx4;
-  float os_fvtxc_tracks_qy4 = os_fvtxs_tracks_qy4 + os_fvtxn_tracks_qy4;
-  float os_fvtxc_tracks_qx6 = os_fvtxs_tracks_qx6 + os_fvtxn_tracks_qx6;
-  float os_fvtxc_tracks_qy6 = os_fvtxs_tracks_qy6 + os_fvtxn_tracks_qy6;
-  float os_fvtxc_tracks_qw = os_fvtxs_tracks_qw + os_fvtxn_tracks_qw;
-  float os_fvtxc_tracks_qq2 = calc2_event(os_fvtxc_tracks_qx2,os_fvtxc_tracks_qy2,os_fvtxc_tracks_qw);
-  float os_fvtxc_tracks_qq3 = calc2_event(os_fvtxc_tracks_qx3,os_fvtxc_tracks_qy3,os_fvtxc_tracks_qw);
 
   // --- scalar product, fvtxs dot fvtxn
-  float os_fvtxsfvtxn_tracks_qq2 = ( (os_fvtxs_tracks_qx2*os_fvtxn_tracks_qx2) + (os_fvtxs_tracks_qy2*os_fvtxn_tracks_qy2) ) / ( os_fvtxs_tracks_qw*os_fvtxn_tracks_qw );
-  float os_fvtxsfvtxn_tracks_qq3 = ( (os_fvtxs_tracks_qx3*os_fvtxn_tracks_qx3) + (os_fvtxs_tracks_qy3*os_fvtxn_tracks_qy3) ) / ( os_fvtxs_tracks_qw*os_fvtxn_tracks_qw );
-  float os_fvtxsfvtxn_tracks_qq4 = ( (os_fvtxs_tracks_qx4*os_fvtxn_tracks_qx4) + (os_fvtxs_tracks_qy4*os_fvtxn_tracks_qy4) ) / ( os_fvtxs_tracks_qw*os_fvtxn_tracks_qw );
 
   // --- now have a look at some 4 particle cumulants
   // --- calc4_event has the protection/requirement on the minimum number of tracks
-  float os_fvtxs_tracks_qqqq24 = calc4_event(os_fvtxs_tracks_qx2,os_fvtxs_tracks_qy2,os_fvtxs_tracks_qx4,os_fvtxs_tracks_qy4,os_fvtxs_tracks_qw);
-  float os_fvtxn_tracks_qqqq24 = calc4_event(os_fvtxn_tracks_qx2,os_fvtxn_tracks_qy2,os_fvtxn_tracks_qx4,os_fvtxn_tracks_qy4,os_fvtxn_tracks_qw);
-  float os_fvtxc_tracks_qqqq24 = calc4_event(os_fvtxc_tracks_qx2,os_fvtxc_tracks_qy2,os_fvtxc_tracks_qx4,os_fvtxc_tracks_qy4,os_fvtxc_tracks_qw);
-  float os_fvtxs_tracks_qqqq34 = calc4_event(os_fvtxs_tracks_qx3,os_fvtxs_tracks_qy3,os_fvtxs_tracks_qx6,os_fvtxs_tracks_qy6,os_fvtxs_tracks_qw);
-  float os_fvtxn_tracks_qqqq34 = calc4_event(os_fvtxn_tracks_qx3,os_fvtxn_tracks_qy3,os_fvtxn_tracks_qx6,os_fvtxn_tracks_qy6,os_fvtxn_tracks_qw);
-  float os_fvtxc_tracks_qqqq34 = calc4_event(os_fvtxc_tracks_qx3,os_fvtxc_tracks_qy3,os_fvtxc_tracks_qx6,os_fvtxc_tracks_qy6,os_fvtxc_tracks_qw);
   // --- four particle 2sub
-  tca2 = TComplex(os_fvtxs_tracks_qx2,os_fvtxs_tracks_qy2);
-  tcb2 = TComplex(os_fvtxn_tracks_qx2,os_fvtxn_tracks_qy2);
-  tca4 = TComplex(os_fvtxs_tracks_qx4,os_fvtxs_tracks_qy4);
-  tcb4 = TComplex(os_fvtxn_tracks_qx4,os_fvtxn_tracks_qy4);
   tc_numerator_a = tca2*tca2 - tca4;
   tc_numerator_b = TComplex::Conjugate(tcb2*tcb2 - tcb4);
   tc_numerator = tc_numerator_a*tc_numerator_b;
   numerator = tc_numerator.Re();
-  tcaw = os_fvtxs_tracks_qw*os_fvtxs_tracks_qw - os_fvtxs_tracks_qw;
-  tcbw = os_fvtxn_tracks_qw*os_fvtxn_tracks_qw - os_fvtxn_tracks_qw;
   denominator = tcaw*tcbw;
   answer_c24a = numerator/denominator;
   // --- four particle 2sub, 3rd harmonic
-  tca3 = TComplex(os_fvtxs_tracks_qx3,os_fvtxs_tracks_qy3);
-  tcb3 = TComplex(os_fvtxn_tracks_qx3,os_fvtxn_tracks_qy3);
-  tca6 = TComplex(os_fvtxs_tracks_qx6,os_fvtxs_tracks_qy6);
-  tcb6 = TComplex(os_fvtxn_tracks_qx6,os_fvtxn_tracks_qy6);
   tc_numerator_a = tca3*tca3 - tca6;
   tc_numerator_b = TComplex::Conjugate(tcb3*tcb3 - tcb6);
   tc_numerator = tc_numerator_a*tc_numerator_b;
   numerator = tc_numerator.Re();
-  tcaw = os_fvtxs_tracks_qw*os_fvtxs_tracks_qw - os_fvtxs_tracks_qw;
-  tcbw = os_fvtxn_tracks_qw*os_fvtxn_tracks_qw - os_fvtxn_tracks_qw;
   denominator = tcaw*tcbw;
   answer_c34a = numerator/denominator;
 
 
   if ( _verbosity > 2 )
     {
-      cout << "Mcos2phi " << os_fvtxc_tracks_qx2 << " " << Qvector[2][1].Re()  << endl;
-      cout << "Msin2phi " << os_fvtxc_tracks_qy2 << " " << Qvector[2][1].Im()  << endl;
-      cout << "M        " << os_fvtxc_tracks_qw  << " " << Qvector[0][1].Re() << endl;
-      // cout << "2 " << os_fvtxc_tracks_qq2    << " " <<  twoRecursion.Re() << endl;
-      // cout << "4 " << os_fvtxc_tracks_qqqq24 << " " << fourRecursion.Re() << endl;
-      // cout << "6 " << os_fvtxc_tracks_six    << " " <<  sixRecursion.Re() << endl;
       cout << "offset south 2x " << " " << Qoffset_south[2][1].Re()/Qvector_south[0][1].Re() << " " << qvoff_nfvtxt_south[icent][0][2] << endl;
       cout << "offset north 2x " << " " << Qoffset_north[2][1].Re()/Qvector_north[0][1].Re() << " " << qvoff_nfvtxt_north[icent][0][2] << endl;
       cout << "offset south 2y " << " " << Qoffset_south[2][1].Im()/Qvector_south[0][1].Re() << " " << qvoff_nfvtxt_south[icent][1][2] << endl;
@@ -1092,68 +957,6 @@ int GreensboroCorrelations::EventStuff()
   if ( _verbosity > 1000 )
     {
       cout << answer_c24a << endl;
-      cout << ac_fvtxs_tracks_qq2 << endl;
-      cout << ac_fvtxs_tracks_qq3 << endl;
-      cout << ac_fvtxs_tracks_cossum22 << endl;
-      cout << ac_fvtxs_tracks_sinsum22 << endl;
-      cout << ac_fvtxs_tracks_cossum32 << endl;
-      cout << ac_fvtxs_tracks_sinsum32 << endl;
-      cout << ac_fvtxs_tracks_cos23 << endl;
-      cout << ac_fvtxs_tracks_sin23 << endl;
-      cout << ac_fvtxs_tracks_cos33 << endl;
-      cout << ac_fvtxs_tracks_sin33 << endl;
-      cout << ac_fvtxn_tracks_qq2 << endl;
-      cout << ac_fvtxn_tracks_qq3 << endl;
-      cout << ac_fvtxn_tracks_cossum22 << endl;
-      cout << ac_fvtxn_tracks_sinsum22 << endl;
-      cout << ac_fvtxn_tracks_cossum32 << endl;
-      cout << ac_fvtxn_tracks_sinsum32 << endl;
-      cout << ac_fvtxn_tracks_cos23 << endl;
-      cout << ac_fvtxn_tracks_sin23 << endl;
-      cout << ac_fvtxn_tracks_cos33 << endl;
-      cout << ac_fvtxn_tracks_sin33 << endl;
-      cout << ac_fvtxsfvtxn_tracks_qq2 << endl;
-      cout << ac_fvtxsfvtxn_tracks_qq3 << endl;
-      cout << ac_fvtxs_tracks_qqqq24 << endl;
-      cout << ac_fvtxn_tracks_qqqq24 << endl;
-      cout << ac_fvtxs_tracks_qqqq34 << endl;
-      cout << ac_fvtxn_tracks_qqqq34 << endl;
-      cout << ac_fvtxs_tracks_six << endl;
-      cout << ac_fvtxn_tracks_six << endl;
-      cout << os_fvtxs_tracks_qq2 << endl;
-      cout << os_fvtxs_tracks_qq3 << endl;
-      cout << os_fvtxs_tracks_cossum22 << endl;
-      cout << os_fvtxs_tracks_sinsum22 << endl;
-      cout << os_fvtxs_tracks_cossum32 << endl;
-      cout << os_fvtxs_tracks_sinsum32 << endl;
-      cout << os_fvtxs_tracks_cos23 << endl;
-      cout << os_fvtxs_tracks_sin23 << endl;
-      cout << os_fvtxs_tracks_cos33 << endl;
-      cout << os_fvtxs_tracks_sin33 << endl;
-      cout << os_fvtxn_tracks_qq2 << endl;
-      cout << os_fvtxn_tracks_qq3 << endl;
-      cout << os_fvtxn_tracks_cossum22 << endl;
-      cout << os_fvtxn_tracks_sinsum22 << endl;
-      cout << os_fvtxn_tracks_cossum32 << endl;
-      cout << os_fvtxn_tracks_sinsum32 << endl;
-      cout << os_fvtxn_tracks_cos23 << endl;
-      cout << os_fvtxn_tracks_sin23 << endl;
-      cout << os_fvtxn_tracks_cos33 << endl;
-      cout << os_fvtxn_tracks_sin33 << endl;
-      cout << os_fvtxc_tracks_cossum32 << endl;
-      cout << os_fvtxc_tracks_sinsum32 << endl;
-      cout << os_fvtxc_tracks_cos33 << endl;
-      cout << os_fvtxc_tracks_sin33 << endl;
-      cout << os_fvtxsfvtxn_tracks_qq2 << endl;
-      cout << os_fvtxsfvtxn_tracks_qq3 << endl;
-      cout << os_fvtxsfvtxn_tracks_qq4 << endl;
-      cout << os_fvtxs_tracks_qqqq24 << endl;
-      cout << os_fvtxn_tracks_qqqq24 << endl;
-      cout << os_fvtxs_tracks_qqqq34 << endl;
-      cout << os_fvtxn_tracks_qqqq34 << endl;
-      cout << os_fvtxc_tracks_qqqq34 << endl;
-      cout << os_fvtxs_tracks_six << endl;
-      cout << os_fvtxn_tracks_six << endl;
     } // verbosity
 
   return EVENT_OK;
