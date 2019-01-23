@@ -869,19 +869,6 @@ int GreensboroCorrelations::EventStuff()
   // --- now have a look at some 4 particle cumulants
   // --- calc4_event has the protection/requirement on the minimum number of tracks
   // --- four particle 2sub
-  TComplex tc_numerator_a = tca2*tca2 - tca4;
-  TComplex tc_numerator_b = TComplex::Conjugate(tcb2*tcb2 - tcb4);
-  TComplex tc_numerator = tc_numerator_a*tc_numerator_b;
-  double numerator = tc_numerator.Re();
-  double denominator = tcaw*tcbw;
-  double answer_c24a = numerator/denominator;
-  // --- four particle 2sub, 3rd harmonic
-  tc_numerator_a = tca3*tca3 - tca6;
-  tc_numerator_b = TComplex::Conjugate(tcb3*tcb3 - tcb6);
-  tc_numerator = tc_numerator_a*tc_numerator_b;
-  numerator = tc_numerator.Re();
-  denominator = tcaw*tcbw;
-  double answer_c34a = numerator/denominator;
 
 
 
@@ -919,19 +906,6 @@ int GreensboroCorrelations::EventStuff()
   // --- now have a look at some 4 particle cumulants
   // --- calc4_event has the protection/requirement on the minimum number of tracks
   // --- four particle 2sub
-  tc_numerator_a = tca2*tca2 - tca4;
-  tc_numerator_b = TComplex::Conjugate(tcb2*tcb2 - tcb4);
-  tc_numerator = tc_numerator_a*tc_numerator_b;
-  numerator = tc_numerator.Re();
-  denominator = tcaw*tcbw;
-  answer_c24a = numerator/denominator;
-  // --- four particle 2sub, 3rd harmonic
-  tc_numerator_a = tca3*tca3 - tca6;
-  tc_numerator_b = TComplex::Conjugate(tcb3*tcb3 - tcb6);
-  tc_numerator = tc_numerator_a*tc_numerator_b;
-  numerator = tc_numerator.Re();
-  denominator = tcaw*tcbw;
-  answer_c34a = numerator/denominator;
 
 
   if ( _verbosity > 2 )
@@ -953,11 +927,6 @@ int GreensboroCorrelations::EventStuff()
   // --- four particle
   // --- four particle 2sub
   // --- six particle
-
-  if ( _verbosity > 1000 )
-    {
-      cout << answer_c24a << endl;
-    } // verbosity
 
   return EVENT_OK;
 
