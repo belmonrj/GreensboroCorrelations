@@ -129,6 +129,28 @@ class GreensboroCorrelations: public SubsysReco
 
   int tmp_evt;
 
+  //-- ntp_event variables
+  int event;
+  float bbc_z;
+  float centrality;
+  float bbc_qn;
+  float bbc_qs;
+  int icent;
+  int npc1;
+  int nfvtxt;
+  int nfvtxt_south;
+  int nfvtxt_north;
+  int nfvtxt_raw;
+  unsigned int trigger_scaled;
+  unsigned int trigger_live;
+  float bc_x;
+  float bc_y;
+  float zvtx;
+  float vtx_z;
+  float FVTX_X;
+  float FVTX_Y;
+  float FVTX_Z;
+
   static const int nharm = 5;
   float d_SouthQX[nharm];
   float d_SouthQY[nharm];
