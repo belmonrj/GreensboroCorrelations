@@ -175,6 +175,11 @@ int GreensboroCorrelations::InitRun(PHCompositeNode *topNode)
       cout << "initializing uitls..." << _utils << endl;
       _utils = new dAuBES_utils(_collsys, true);
       cout << "done initializing utils? " << _utils << endl;
+      if ( _utils == NULL )
+        {
+          cout << "WARNING: utils class expected but not found..." << endl;
+          use_utils = false;
+        }
     }
   // _utils->is_sim(_is_sim);
 
