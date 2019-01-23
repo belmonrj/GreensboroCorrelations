@@ -360,9 +360,6 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
               ++number_of_tracks_that_pass;
               th2d_track_aafter_eta->Fill(centrality,feta[i]);
               th2d_track_aafter_phi->Fill(centrality,fphi[i]);
-              for ( int cs = 0; cs < maxHarmonic; ++cs )
-                {
-                } // loop over harmonics
             } // check on pass after nested loop
         } // outer loop
     } // check on do_double_track_cut
@@ -446,17 +443,6 @@ int GreensboroCorrelations::EventStuff()
   int ntrack_south_outer = 0;
   int ntrack_north_outer = 0;
 
-  float special_fvtx_tracks_qx2[8];
-  float special_fvtx_tracks_qy2[8];
-  float special_fvtx_tracks_qw[8];
-  for ( int i = 0; i < 8; ++i )
-  {
-    special_fvtx_tracks_qx2[i] = 0;
-    special_fvtx_tracks_qy2[i] = 0;
-    special_fvtx_tracks_qw[i] = 0;
-  }
-
-
   // --- initialize Q-vectors for tree
   for ( int i = 0; i < nharm; ++i )
     {
@@ -503,23 +489,6 @@ int GreensboroCorrelations::EventStuff()
             }
           d_SouthQW += 1;
         }
-
-      // --- now fill the Q-vector arrays
-      int special_index = -1;
-      if ( eta > -3.0 && eta < -2.5 ) special_index = 0;
-      if ( eta > -2.5 && eta < -2.0 ) special_index = 1;
-      if ( eta > -2.0 && eta < -1.5 ) special_index = 2;
-      if ( eta > -1.5 && eta < -1.0 ) special_index = 3;
-      if ( eta > 1.0 && eta < 1.5 ) special_index = 4;
-      if ( eta > 1.5 && eta < 2.0 ) special_index = 5;
-      if ( eta > 2.0 && eta < 2.5 ) special_index = 6;
-      if ( eta > 2.5 && eta < 3.0 ) special_index = 7;
-      if ( special_index > -1 && special_index < 8 )
-	{
-	  special_fvtx_tracks_qx2[special_index] += cos(2*phi);
-	  special_fvtx_tracks_qy2[special_index] += sin(2*phi);
-	  special_fvtx_tracks_qw[special_index] += 1;
-	}
 
       bool is_south = ( eta < 0 );
       bool is_south_inner = ( eta > -2 && eta < 0 );

@@ -119,10 +119,6 @@ GreensboroCorrelations::GreensboroCorrelations(): SubsysReco("GREENSBOROCORRELAT
   th2d_cent_chisq = NULL;
   tp1f_track_detacutpass = NULL;
 
-  for ( int i = 0; i < 8; ++i ) tp1f_special_fvtx_tracks_ab[i] = NULL;
-  tp1f_special_fvtx_tracks_aa = NULL;
-  tp1f_special_fvtx_tracks_aa_cos = NULL;
-  tp1f_special_fvtx_tracks_aa_sin = NULL;
 
   for ( int i = 0; i < maxTracks; ++i )
     {
