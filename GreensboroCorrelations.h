@@ -216,16 +216,6 @@ class GreensboroCorrelations: public SubsysReco
   TProfile* tp1f_special_fvtx_tracks_aa_sin;
 
 
-  TProfile* eta_recoffsets[2][maxHarmonic];
-  TProfile* zvtx_recoffsets[2][maxHarmonic];
-  TProfile* zvtx_recoffsets_north[2][maxHarmonic];
-  TProfile* zvtx_recoffsets_south[2][maxHarmonic];
-  TProfile* nfvtxt_recoffsets[2][maxHarmonic];
-  TProfile* nfvtxt_recoffsets_north[2][maxHarmonic];
-  TProfile* nfvtxt_recoffsets_south[2][maxHarmonic];
-  TProfile* centrality_recoffsets[2][maxHarmonic];
-  TProfile* centrality_recoffsets_north[2][maxHarmonic];
-  TProfile* centrality_recoffsets_south[2][maxHarmonic];
 
 
 

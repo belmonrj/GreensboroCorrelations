@@ -146,23 +146,6 @@ int GreensboroCorrelations::Init(PHCompositeNode *topNode)
   // ---
   // ---
 
-  for ( int cs = 0; cs < 2; ++cs )
-    {
-      for ( int c = 0; c < maxHarmonic; ++c )
-        {
-          eta_recoffsets[cs][c] = new TProfile(Form("eta_recoffsets_%d_%d",cs,c),"",700,-3.5,3.5,-1.1,1.1);
-          zvtx_recoffsets[cs][c] = new TProfile(Form("zvtx_recoffsets_%d_%d",cs,c),"",220,-11.0,11.0,-1.1,1.1);
-          zvtx_recoffsets_north[cs][c] = new TProfile(Form("zvtx_recoffsets_north_%d_%d",cs,c),"",220,-11.0,11.0,-1.1,1.1);
-          zvtx_recoffsets_south[cs][c] = new TProfile(Form("zvtx_recoffsets_south_%d_%d",cs,c),"",220,-11.0,11.0,-1.1,1.1);
-          nfvtxt_recoffsets[cs][c] = new TProfile(Form("nfvtxt_recoffsets_%d_%d",cs,c),"",700,-0.5,699.5,-1.1,1.1);
-          nfvtxt_recoffsets_north[cs][c] = new TProfile(Form("nfvtxt_recoffsets_north_%d_%d",cs,c),"",700,-0.5,699.5,-1.1,1.1);
-          nfvtxt_recoffsets_south[cs][c] = new TProfile(Form("nfvtxt_recoffsets_south_%d_%d",cs,c),"",700,-0.5,699.5,-1.1,1.1);
-          centrality_recoffsets[cs][c] = new TProfile(Form("centrality_recoffsets_%d_%d",cs,c),"",100,-0.5,99.5,-1.1,1.1);
-          centrality_recoffsets_north[cs][c] = new TProfile(Form("centrality_recoffsets_north_%d_%d",cs,c),"",100,-0.5,99.5,-1.1,1.1);
-          centrality_recoffsets_south[cs][c] = new TProfile(Form("centrality_recoffsets_south_%d_%d",cs,c),"",100,-0.5,99.5,-1.1,1.1);
-        }
-    }
-
   return EVENT_OK;
 
 }

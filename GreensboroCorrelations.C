@@ -124,23 +124,6 @@ GreensboroCorrelations::GreensboroCorrelations(): SubsysReco("GREENSBOROCORRELAT
   tp1f_special_fvtx_tracks_aa_cos = NULL;
   tp1f_special_fvtx_tracks_aa_sin = NULL;
 
-  for ( int cs = 0; cs < 2; ++cs )
-    {
-      for ( int c = 0; c < maxHarmonic; ++c )
-        {
-          eta_recoffsets[cs][c] = NULL;
-          zvtx_recoffsets[cs][c] = NULL;
-          zvtx_recoffsets_north[cs][c] = NULL;
-          zvtx_recoffsets_south[cs][c] = NULL;
-          nfvtxt_recoffsets[cs][c] = NULL;
-          nfvtxt_recoffsets_north[cs][c] = NULL;
-          nfvtxt_recoffsets_south[cs][c] = NULL;
-          centrality_recoffsets[cs][c] = NULL;
-          centrality_recoffsets_north[cs][c] = NULL;
-          centrality_recoffsets_south[cs][c] = NULL;
-        }
-    }
-
   for ( int i = 0; i < maxTracks; ++i )
     {
       for ( int cs = 0; cs < 2; ++cs )

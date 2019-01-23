@@ -362,8 +362,6 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
               th2d_track_aafter_phi->Fill(centrality,fphi[i]);
               for ( int cs = 0; cs < maxHarmonic; ++cs )
                 {
-                  eta_recoffsets[0][cs]->Fill(feta[i],cos(cs*fphi[i]));
-                  eta_recoffsets[1][cs]->Fill(feta[i],sin(cs*fphi[i]));
                 } // loop over harmonics
             } // check on pass after nested loop
         } // outer loop
