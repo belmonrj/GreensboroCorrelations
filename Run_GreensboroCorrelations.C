@@ -24,9 +24,9 @@ void Run_GreensboroCorrelations(const char *outFile = "test_train_output.root")
   //--------------------//
 
   GreensboroCorrelations *sflow = new GreensboroCorrelations();
-  sflow->set_use_runlist(false);
+  //sflow->set_use_runlist(false);
   sflow->set_output_filename(outFile);
-  sflow->Verbosity(5);
+  sflow->Verbosity(0);
   se->registerSubsystem(sflow);
 
 }
