@@ -390,10 +390,12 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
 int GreensboroCorrelations::EventStuff()
 {
 
+  if ( _verbosity > 1 ) cout << "now doing event stuff, number of tracks is " << nfvtxt << endl;
 
   // --- third fvtxt track loop to calculate Q-vectors
   for ( int i = 0; i < nfvtxt; ++i )
     {
+      if ( _verbosity > 2 ) cout << "now inside third loop" << endl;
       // --- double track cut
       // if ( do_double_track_cut && !fvtx_track_passes[i] ) continue;
       // double eta = feta[i];
@@ -417,6 +419,7 @@ int GreensboroCorrelations::EventStuff()
       if ( north ) th1d_fvtxn_phi->Fill(phi);
       for ( int j = 0; j < nfvtxt; ++j )
         {
+          if ( _verbosity > 3 ) cout << "now inside nested loop" << endl;
           if ( do_double_track_cut && !fvtx_track_passes[i] ) continue;
           if ( do_double_track_cut && !fvtx_track_passes[j] ) continue;
           double eta1 = feta[i];
