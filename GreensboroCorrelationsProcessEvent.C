@@ -415,7 +415,7 @@ int GreensboroCorrelations::EventStuff()
       if ( south ) th1d_fvtxs_phi->Fill(phi);
       if ( north ) th1d_fvtxn_eta->Fill(eta);
       if ( north ) th1d_fvtxn_phi->Fill(phi);
-      for ( int j = 0; j < nftvtxt; ++j )
+      for ( int j = 0; j < nfvtxt; ++j )
         {
           if ( do_double_track_cut && !fvtx_track_passes[i] ) continue;
           if ( do_double_track_cut && !fvtx_track_passes[j] ) continue;
