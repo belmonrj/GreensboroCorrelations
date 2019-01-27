@@ -63,41 +63,19 @@ int GreensboroCorrelations::Init(PHCompositeNode *topNode)
 
 
 
+  th1d_fvtxs_eta = new TH1D("th1d_fvtxs_eta","",20,-3.0,-1.0);
+  th1d_fvtxs_phi = new TH1D("th1d_fvtxs_phi","",20,-pi/4,3*pi/4);
+  th1d_fvtxn_eta = new TH1D("th1d_fvtxn_eta","",20,1.0,3.0);
+  th1d_fvtxn_phi = new TH1D("th1d_fvtxn_phi","",20,-pi/4,3*pi/4);
+  th1d_fvtxs_gap_phi = new TH1D("th1d_fvtxs_gap_phi","",20,-pi/4,3*pi/4);
+  th1d_fvtxn_gap_phi = new TH1D("th1d_fvtxn_gap_phi","",20,-pi/4,3*pi/4);
 
-  // ---------------------------------------------------------------------------------------------------------
-  // --- centrality
-  // ---------------------------------------------------------------------------------------------------------
-
-  for ( int iharm = 2; iharm < 5; ++iharm )
-    {
-      // --------------------------------------------------------------------------------------------------------------------------
-      // --- without q-vector recentering
-      // ---
-      // --- cumulant histograms
-      // --- combined
-      // --- south
-      // --- north
-      // --- subevent histograms
-      // --- correction histograms
-      // --- combined
-      // --- south
-      // --- south
-      // --------------------------------------------------------------------------------------------------------------------------
-      // --- with q-vector recentering
-      // ---
-      // --- cumulant histograms
-      // --- combined
-      // --- south
-      // --- north
-      // --- subevent histograms
-      // --- correction histograms
-      // --- combined
-    }
-
-
-
-
-
+  th2d_fvtxs_eta = new TH2D("th2d_fvtxs_eta","",20,-3.0,-1.0,20,-3.0,-1.0);
+  th2d_fvtxs_phi = new TH2D("th2d_fvtxs_phi","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
+  th2d_fvtxn_eta = new TH2D("th2d_fvtxn_eta","",20,1.0,3.0,20,1.0,3.0);
+  th2d_fvtxn_phi = new TH2D("th2d_fvtxn_phi","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
+  th2d_fvtxs_gap_phi = new TH2D("th2d_fvtxs_gap_phi","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
+  th2d_fvtxn_gap_phi = new TH2D("th2d_fvtxn_gap_phi","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
 
 
 

@@ -390,187 +390,63 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
 int GreensboroCorrelations::EventStuff()
 {
 
-  // ------------------------------------
-  // --- initialize the Q-vectors to zero
-  // ------------------------------------
-
-  // --- fvtx tracks
-  float fvtxs_tracks_qx2[3]; // both, inner, outer
-  float fvtxs_tracks_qy2[3];
-  float fvtxs_tracks_qx3[3];
-  float fvtxs_tracks_qy3[3];
-  float fvtxs_tracks_qx4[3];
-  float fvtxs_tracks_qy4[3];
-  float fvtxs_tracks_qx6[3];
-  float fvtxs_tracks_qy6[3];
-  float fvtxs_tracks_qw[3];
-  float fvtxn_tracks_qx2[3]; // both, inner, outer
-  float fvtxn_tracks_qy2[3];
-  float fvtxn_tracks_qx3[3];
-  float fvtxn_tracks_qy3[3];
-  float fvtxn_tracks_qx4[3];
-  float fvtxn_tracks_qy4[3];
-  float fvtxn_tracks_qx6[3];
-  float fvtxn_tracks_qy6[3];
-  float fvtxn_tracks_qw[3];
-
-  for ( int i = 0; i < 3; ++i )
-  {
-    fvtxs_tracks_qx2[i] = 0.0;
-    fvtxs_tracks_qy2[i] = 0.0;
-    fvtxs_tracks_qx3[i] = 0.0;
-    fvtxs_tracks_qy3[i] = 0.0;
-    fvtxs_tracks_qx4[i] = 0.0;
-    fvtxs_tracks_qy4[i] = 0.0;
-    fvtxs_tracks_qx6[i] = 0.0;
-    fvtxs_tracks_qy6[i] = 0.0;
-    fvtxs_tracks_qw[i] = 0.0;
-    fvtxn_tracks_qx2[i] = 0.0;
-    fvtxn_tracks_qy2[i] = 0.0;
-    fvtxn_tracks_qx3[i] = 0.0;
-    fvtxn_tracks_qy3[i] = 0.0;
-    fvtxn_tracks_qx4[i] = 0.0;
-    fvtxn_tracks_qy4[i] = 0.0;
-    fvtxn_tracks_qx6[i] = 0.0;
-    fvtxn_tracks_qy6[i] = 0.0;
-    fvtxn_tracks_qw[i] = 0.0;
-  } // loop over layers
-
-  int ntrack_south_inner = 0;
-  int ntrack_north_inner = 0;
-  int ntrack_south_outer = 0;
-  int ntrack_north_outer = 0;
-
-  // --- initialize Q-vectors for tree
-  for ( int i = 0; i < nharm; ++i )
-    {
-      d_NorthQX[i] = 0;
-      d_NorthQY[i] = 0;
-      d_SouthQX[i] = 0;
-      d_SouthQY[i] = 0;
-    }
-  d_NorthQW = 0;
-  d_SouthQW = 0;
 
   // --- third fvtxt track loop to calculate Q-vectors
   for ( int i = 0; i < nfvtxt; ++i )
     {
       // --- double track cut
-      if ( do_double_track_cut && !fvtx_track_passes[i] ) continue;
+      // if ( do_double_track_cut && !fvtx_track_passes[i] ) continue;
+      // double eta = feta[i];
+      // double phi = fphi[i];
+      // double DCA_x = fdcax[i];
+      // double DCA_y = fdcay[i];
+      // double chisq = fchi2ndf[i];
+      // int nhits_special = fnhitspc[i];
+      // --- need to do different cuts here for systematics studies...
+      // if ( nhits_special < _cut_nhit ) continue; // need at least 3 hits in FVTX, excluding VTX
+      // if ( fabs(DCA_x) > _cut_dca || fabs(DCA_y) > _cut_dca ) continue;
+      // if ( nhits < _cut_nhit ) continue;
+      // if ( chisq > _cut_chi2 ) continue;
       double eta = feta[i];
       double phi = fphi[i];
-      double DCA_x = fdcax[i];
-      double DCA_y = fdcay[i];
-      double chisq = fchi2ndf[i];
-      int nhits_special = fnhitspc[i];
-      // --- need to do different cuts here
-      if ( nhits_special < _cut_nhit ) continue; // need at least 3 hits in FVTX, excluding VTX
-      if ( fabs(DCA_x) > _cut_dca || fabs(DCA_y) > _cut_dca ) continue;
-      //if ( nhits < _cut_nhit ) continue;
-      if ( chisq > _cut_chi2 ) continue;
-      // --- Q-vectors for tree
-      if ( eta > 0 )
+      bool south = ( eta < 0 );
+      bool north = ( eta > 0 );
+      if ( south ) th1d_fvtxs_eta->Fill(eta);
+      if ( south ) th1d_fvtxs_phi->Fill(phi);
+      if ( north ) th1d_fvtxn_eta->Fill(eta);
+      if ( north ) th1d_fvtxn_phi->Fill(phi);
+      for ( int j = 0; j < nftvtxt; ++j )
         {
-          for ( int i = 0; i < nharm; ++i )
+          if ( do_double_track_cut && !fvtx_track_passes[i] ) continue;
+          if ( do_double_track_cut && !fvtx_track_passes[j] ) continue;
+          double eta1 = feta[i];
+          double eta2 = feta[j];
+          double phi1 = fphi[i];
+          double phi2 = fphi[j];
+          double deta = eta2-eta1;
+          double dphi = phi2-phi1;
+          // --- do periodic shift for correct range for dphi
+          if ( dphi < -pi/4 ) dphi += 2*pi;
+          if ( dphi > 3*pi/4 ) dphi -= 2*pi;
+          // --- new definitions for south and north
+          bool south = ( eta1 < 0 && eta2 < 0 );
+          bool north = ( eta1 > 0 && eta2 > 0 );
+          if ( south ) th2d_fvtxs_eta->Fill(eta1,eta2);
+          if ( south ) th2d_fvtxs_phi->Fill(phi1,phi2);
+          if ( north ) th2d_fvtxn_eta->Fill(eta1,eta2);
+          if ( north ) th2d_fvtxn_phi->Fill(phi1,phi2);
+          // --- now add the gap
+          bool gap = fabs(deta) > 1.0;
+          if ( gap )
             {
-              d_NorthQX[i] += cos(i*phi);
-              d_NorthQY[i] += sin(i*phi);
+              if ( south ) th2d_fvtxs_gap_phi->Fill(phi1,phi2);
+              if ( north ) th2d_fvtxn_gap_phi->Fill(phi1,phi2);
+              // --- can do i=0 and phi2 or j=0 and phi1, doesn't matter...
+              // --- but it might be better to pick a random number between 0 and nfvtxt-1...
+              if ( i==0 && south ) th1d_fvtxs_gap_phi->Fill(phi2);
+              if ( i==0 && north ) th1d_fvtxn_gap_phi->Fill(phi2);
             }
-          d_NorthQW += 1;
-        }
-      if ( eta < 0 )
-        {
-          for ( int i = 0; i < nharm; ++i )
-            {
-              d_SouthQX[i] += cos(i*phi);
-              d_SouthQY[i] += sin(i*phi);
-            }
-          d_SouthQW += 1;
-        }
-
-      bool is_south = ( eta < 0 );
-      bool is_south_inner = ( eta > -2 && eta < 0 );
-      bool is_south_outer = ( eta < -2 );
-      bool is_north = ( eta > 0 );
-      bool is_north_inner = ( eta < 2 && eta > 0 );
-      bool is_north_outer = ( eta > 2 );
-
-      if ( is_south )
-	{
-	  fvtxs_tracks_qx2[0] += cos(2*phi);
-	  fvtxs_tracks_qy2[0] += sin(2*phi);
-	  fvtxs_tracks_qx3[0] += cos(3*phi);
-	  fvtxs_tracks_qy3[0] += sin(3*phi);
-	  fvtxs_tracks_qx4[0] += cos(4*phi);
-	  fvtxs_tracks_qy4[0] += sin(4*phi);
-	  fvtxs_tracks_qx6[0] += cos(6*phi);
-	  fvtxs_tracks_qy6[0] += sin(6*phi);
-	  fvtxs_tracks_qw[0] += 1;
-	}
-      if ( is_south_inner )
-	{
-	  fvtxs_tracks_qx2[1] += cos(2*phi);
-	  fvtxs_tracks_qy2[1] += sin(2*phi);
-	  fvtxs_tracks_qx3[1] += cos(3*phi);
-	  fvtxs_tracks_qy3[1] += sin(3*phi);
-	  fvtxs_tracks_qx4[1] += cos(4*phi);
-	  fvtxs_tracks_qy4[1] += sin(4*phi);
-	  fvtxs_tracks_qx6[1] += cos(6*phi);
-	  fvtxs_tracks_qy6[1] += sin(6*phi);
-	  fvtxs_tracks_qw[1] += 1;
-	  ++ntrack_south_inner;
-	}
-      if ( is_south_outer )
-	{
-	  fvtxs_tracks_qx2[2] += cos(2*phi);
-	  fvtxs_tracks_qy2[2] += sin(2*phi);
-	  fvtxs_tracks_qx3[2] += cos(3*phi);
-	  fvtxs_tracks_qy3[2] += sin(3*phi);
-	  fvtxs_tracks_qx4[2] += cos(4*phi);
-	  fvtxs_tracks_qy4[2] += sin(4*phi);
-	  fvtxs_tracks_qx6[2] += cos(6*phi);
-	  fvtxs_tracks_qy6[2] += sin(6*phi);
-	  fvtxs_tracks_qw[2] += 1;
-	  ++ntrack_south_outer;
-	}
-      if ( is_north )
-	{
-	  fvtxn_tracks_qx2[0] += cos(2*phi);
-	  fvtxn_tracks_qy2[0] += sin(2*phi);
-	  fvtxn_tracks_qx3[0] += cos(3*phi);
-	  fvtxn_tracks_qy3[0] += sin(3*phi);
-	  fvtxn_tracks_qx4[0] += cos(4*phi);
-	  fvtxn_tracks_qy4[0] += sin(4*phi);
-	  fvtxn_tracks_qx6[0] += cos(6*phi);
-	  fvtxn_tracks_qy6[0] += sin(6*phi);
-	  fvtxn_tracks_qw[0] += 1;
-	}
-      if ( is_north_inner )
-	{
-	  fvtxn_tracks_qx2[1] += cos(2*phi);
-	  fvtxn_tracks_qy2[1] += sin(2*phi);
-	  fvtxn_tracks_qx3[1] += cos(3*phi);
-	  fvtxn_tracks_qy3[1] += sin(3*phi);
-	  fvtxn_tracks_qx4[1] += cos(4*phi);
-	  fvtxn_tracks_qy4[1] += sin(4*phi);
-	  fvtxn_tracks_qx6[1] += cos(6*phi);
-	  fvtxn_tracks_qy6[1] += sin(6*phi);
-	  fvtxn_tracks_qw[1] += 1;
-	  ++ntrack_north_inner;
-	}
-      if ( is_north_outer )
-	{
-	  fvtxn_tracks_qx2[2] += cos(2*phi);
-	  fvtxn_tracks_qy2[2] += sin(2*phi);
-	  fvtxn_tracks_qx3[2] += cos(3*phi);
-	  fvtxn_tracks_qy3[2] += sin(3*phi);
-	  fvtxn_tracks_qx4[2] += cos(4*phi);
-	  fvtxn_tracks_qy4[2] += sin(4*phi);
-	  fvtxn_tracks_qx6[2] += cos(6*phi);
-	  fvtxn_tracks_qy6[2] += sin(6*phi);
-	  fvtxn_tracks_qw[2] += 1;
-	  ++ntrack_north_outer;
-	}
+        } // end of nested loop for track pairs
     } // end third for loop over tracks
 
 
@@ -578,82 +454,6 @@ int GreensboroCorrelations::EventStuff()
   //---------------------------------------------------------//
   //                 finished Get FVTX Tracks
   //---------------------------------------------------------//
-
-  // --------------------------------------------------------------------------------------- //
-  // --- calculations and histograms designed to be used with/for acceptance corrections --- //
-  // --------------------------------------------------------------------------------------- //
-
-  if ( _verbosity > 1 ) cout << "doing cumulant calculations and filling histograms" << endl;
-
-  // --- FVTX south
-
-  // --- FVTX north
-
-  // --- FVTX north and south combined
-
-  // --- scalar product, fvtxs dot fvtxn
-
-  // --- now have a look at some 4 particle cumulants
-  // --- calc4_event has the protection/requirement on the minimum number of tracks
-  // --- four particle 2sub
-
-
-
-
-
-  // --------------------------------------------------------- //
-  // --- centrality
-  // --------------
-
-  // --- south only
-  // --- north only
-  // --- combined
-  // --- scalar product
-  // --- four particle
-  // --- four particle 2sub
-  // --- six particle
-
-  if ( _verbosity > 2 )
-    {
-    }
-
-  // ------------------------------------------------------------------------------------- //
-  // --- calculations and histograms designed to be used with/for q-vector recentering --- //
-  // ------------------------------------------------------------------------------------- //
-
-  // ---
-  // --- FVTX south
-
-  // --- FVTX north
-
-  // --- FVTX north and south combined
-
-  // --- scalar product, fvtxs dot fvtxn
-
-  // --- now have a look at some 4 particle cumulants
-  // --- calc4_event has the protection/requirement on the minimum number of tracks
-  // --- four particle 2sub
-
-
-  if ( _verbosity > 2 )
-    {
-      cout << "offset south 2x " << " " << Qoffset_south[2][1].Re()/Qvector_south[0][1].Re() << " " << qvoff_nfvtxt_south[icent][0][2] << endl;
-      cout << "offset north 2x " << " " << Qoffset_north[2][1].Re()/Qvector_north[0][1].Re() << " " << qvoff_nfvtxt_north[icent][0][2] << endl;
-      cout << "offset south 2y " << " " << Qoffset_south[2][1].Im()/Qvector_south[0][1].Re() << " " << qvoff_nfvtxt_south[icent][1][2] << endl;
-      cout << "offset north 2y " << " " << Qoffset_north[2][1].Im()/Qvector_north[0][1].Re() << " " << qvoff_nfvtxt_north[icent][1][2] << endl;
-    }
-
-  // --------------------------------------------------------- //
-  // --- centrality
-  // --------------
-
-  // --- south only
-  // --- north only
-  // --- combined
-  // --- scalar product
-  // --- four particle
-  // --- four particle 2sub
-  // --- six particle
 
   return EVENT_OK;
 

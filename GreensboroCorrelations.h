@@ -94,6 +94,8 @@ class GreensboroCorrelations: public SubsysReco
   static const double default_cut_dca = 2.0;
   static const int default_cut_nhit = 3;
 
+  static const double pi = 3.14159265358979;
+
   std::vector<double> fphi;
   std::vector<double> feta;
   std::vector<double> fdcax;
@@ -199,13 +201,19 @@ class GreensboroCorrelations: public SubsysReco
   TH2D* th2d_cent_chisq;
   TProfile* tp1f_track_detacutpass;
 
-  // --- centrality stuff
+  TH1D* th1d_fvtxs_eta;
+  TH1D* th1d_fvtxs_phi;
+  TH1D* th1d_fvtxn_eta;
+  TH1D* th1d_fvtxn_phi;
+  TH1D* th1d_fvtxs_gap_phi;
+  TH1D* th1d_fvtxn_gap_phi;
 
-
-
-
-  // --- event plane decorrelation stuff
-
+  TH2D* th2d_fvtxs_eta;
+  TH2D* th2d_fvtxs_phi;
+  TH2D* th2d_fvtxn_eta;
+  TH2D* th2d_fvtxn_phi;
+  TH2D* th2d_fvtxs_gap_phi;
+  TH2D* th2d_fvtxn_gap_phi;
 
 
 
