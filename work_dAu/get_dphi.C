@@ -11,8 +11,8 @@ void get_dphi()
   TH1D* hcent = (TH1D*)file->Get("th1d_centrality");
   int nevents = hcent->GetEntries();
 
-  TH1D* th1d_fvtxs_phi = (TH1D*)file->Get("th1d_fvtxs_phi");
-  TH2D* th2d_fvtxs_phi = (TH2D*)file->Get("th2d_fvtxs_phi");
+  TH1D* th1d_fvtxs_phi = (TH1D*)file->Get("th1d_fvtxs_gap_phi");
+  TH2D* th2d_fvtxs_phi = (TH2D*)file->Get("th2d_fvtxs_gap_phi");
   TProfile* tp1f_dphiR2 = get_profileR2(nevents,th1d_fvtxs_phi,th2d_fvtxs_phi);
 
   drawme(tp1f_dphiR2);
