@@ -1,5 +1,7 @@
 const double pi = 3.14159265358979;
 
+TProfile* get_profileR2(int, TH1D*, TH1D*, TH2D*);
+
 TProfile* get_profileR2(int, TH1D*, TH2D*);
 
 void drawme(TProfile*);
@@ -21,8 +23,11 @@ void get_dphi()
 
 TProfile* get_profileR2(int nevents, TH1D* th1d_1, TH2D* th2d_12)
 {
+  return get_profileR2(nevents,th1d_1,th1d_1,th2d_12);
+}
 
-  TH1D* th1d_2 = th1d_1; // hmm...
+TProfile* get_profileR2(int nevents, TH1D* th1d_1, TH1D* th1d_2, TH2D* th2d_12)
+{
 
   int nbinsx = th2d_12->GetNbinsX();
   int nbinsy = th2d_12->GetNbinsY();
