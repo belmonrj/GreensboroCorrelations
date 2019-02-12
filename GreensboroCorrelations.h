@@ -215,6 +215,20 @@ class GreensboroCorrelations: public SubsysReco
   TH2D* th2d_fvtxs_gap_phi;
   TH2D* th2d_fvtxn_gap_phi;
 
+  TH1D* th1d_fvtxs_eta_cent0;
+  TH1D* th1d_fvtxs_phi_cent0;
+  TH1D* th1d_fvtxn_eta_cent0;
+  TH1D* th1d_fvtxn_phi_cent0;
+  TH1D* th1d_fvtxs_gap_phi_cent0;
+  TH1D* th1d_fvtxn_gap_phi_cent0;
+
+  TH2D* th2d_fvtxs_eta_cent0;
+  TH2D* th2d_fvtxs_phi_cent0;
+  TH2D* th2d_fvtxn_eta_cent0;
+  TH2D* th2d_fvtxn_phi_cent0;
+  TH2D* th2d_fvtxs_gap_phi_cent0;
+  TH2D* th2d_fvtxn_gap_phi_cent0;
+
 
 
 

@@ -115,7 +115,7 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
   if ( use_utils )
     {
       if ( _verbosity > 1 ) cout << "using utils to check if event is ok " << endl;
-      if (!_utils->is_event_ok(topNode)) return EVENT_OK;
+      if (!_utils->is_event_ok(topNode)) return EVENT_OK; // need to understand this better...
       if ( _verbosity > 1 ) cout << "event passed utils check " << endl;
     }
 
@@ -149,6 +149,7 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
 
   if ( !use_utils && centrality < 0  ) return EVENT_OK;
   if ( !use_utils && centrality > 99 ) return EVENT_OK;
+
 
 
 
@@ -417,6 +418,13 @@ int GreensboroCorrelations::EventStuff()
       if ( south ) th1d_fvtxs_phi->Fill(phi);
       if ( north ) th1d_fvtxn_eta->Fill(eta);
       if ( north ) th1d_fvtxn_phi->Fill(phi);
+      if ( cent > 0 && cent <= 5 )
+        {
+          if ( south ) th1d_fvtxs_eta_cent0->Fill(eta);
+          if ( south ) th1d_fvtxs_phi_cent0->Fill(phi);
+          if ( north ) th1d_fvtxn_eta_cent0->Fill(eta);
+          if ( north ) th1d_fvtxn_phi_cent0->Fill(phi);
+        }
       for ( int j = 0; j < nfvtxt; ++j )
         {
           if ( _verbosity > 3 ) cout << "now inside nested loop" << endl;
@@ -438,6 +446,13 @@ int GreensboroCorrelations::EventStuff()
           if ( south ) th2d_fvtxs_phi->Fill(phi1,phi2);
           if ( north ) th2d_fvtxn_eta->Fill(eta1,eta2);
           if ( north ) th2d_fvtxn_phi->Fill(phi1,phi2);
+          if ( cent > 0 && cent <= 5 )
+            {
+              if ( south ) th2d_fvtxs_eta_cent0->Fill(eta1,eta2);
+              if ( south ) th2d_fvtxs_phi_cent0->Fill(phi1,phi2);
+              if ( north ) th2d_fvtxn_eta_cent0->Fill(eta1,eta2);
+              if ( north ) th2d_fvtxn_phi_cent0->Fill(phi1,phi2);
+            }
           // --- now add the gap
           bool gap = fabs(deta) > 1.0;
           if ( gap )
@@ -448,7 +463,14 @@ int GreensboroCorrelations::EventStuff()
               // --- but it might be better to pick a random number between 0 and nfvtxt-1...
               if ( i==0 && south ) th1d_fvtxs_gap_phi->Fill(phi2);
               if ( i==0 && north ) th1d_fvtxn_gap_phi->Fill(phi2);
-            }
+              if ( cent > 0 && cent <= 5 )
+                {
+                  if ( south ) th2d_fvtxs_gap_phi_cent0->Fill(phi1,phi2);
+                  if ( north ) th2d_fvtxn_gap_phi_cent0->Fill(phi1,phi2);
+                  if ( i==0 && south ) th1d_fvtxs_gap_phi_cent0->Fill(phi2);
+                  if ( i==0 && north ) th1d_fvtxn_gap_phi_cent0->Fill(phi2);
+                } // check on cent
+            } // check on gap
         } // end of nested loop for track pairs
     } // end third for loop over tracks
 

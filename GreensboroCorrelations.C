@@ -131,6 +131,20 @@ GreensboroCorrelations::GreensboroCorrelations(): SubsysReco("GREENSBOROCORRELAT
   th2d_fvtxs_gap_phi = NULL;
   th2d_fvtxn_gap_phi = NULL;
 
+  th1d_fvtxs_eta_cent0 = NULL;
+  th1d_fvtxs_phi_cent0 = NULL;
+  th1d_fvtxn_eta_cent0 = NULL;
+  th1d_fvtxn_phi_cent0 = NULL;
+  th1d_fvtxs_gap_phi_cent0 = NULL;
+  th1d_fvtxn_gap_phi_cent0 = NULL;
+
+  th2d_fvtxs_eta_cent0 = NULL;
+  th2d_fvtxs_phi_cent0 = NULL;
+  th2d_fvtxn_eta_cent0 = NULL;
+  th2d_fvtxn_phi_cent0 = NULL;
+  th2d_fvtxs_gap_phi_cent0 = NULL;
+  th2d_fvtxn_gap_phi_cent0 = NULL;
+
 
   for ( int i = 0; i < maxTracks; ++i )
     {

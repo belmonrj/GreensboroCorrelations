@@ -77,6 +77,20 @@ int GreensboroCorrelations::Init(PHCompositeNode *topNode)
   th2d_fvtxs_gap_phi = new TH2D("th2d_fvtxs_gap_phi","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
   th2d_fvtxn_gap_phi = new TH2D("th2d_fvtxn_gap_phi","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
 
+  th1d_fvtxs_eta_cent0 = new TH1D("th1d_fvtxs_eta_cent0","",20,-3.0,-1.0);
+  th1d_fvtxs_phi_cent0 = new TH1D("th1d_fvtxs_phi_cent0","",20,-pi/4,3*pi/4);
+  th1d_fvtxn_eta_cent0 = new TH1D("th1d_fvtxn_eta_cent0","",20,1.0,3.0);
+  th1d_fvtxn_phi_cent0 = new TH1D("th1d_fvtxn_phi_cent0","",20,-pi/4,3*pi/4);
+  th1d_fvtxs_gap_phi_cent0 = new TH1D("th1d_fvtxs_gap_phi_cent0","",20,-pi/4,3*pi/4);
+  th1d_fvtxn_gap_phi_cent0 = new TH1D("th1d_fvtxn_gap_phi_cent0","",20,-pi/4,3*pi/4);
+
+  th2d_fvtxs_eta_cent0 = new TH2D("th2d_fvtxs_eta_cent0","",20,-3.0,-1.0,20,-3.0,-1.0);
+  th2d_fvtxs_phi_cent0 = new TH2D("th2d_fvtxs_phi_cent0","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
+  th2d_fvtxn_eta_cent0 = new TH2D("th2d_fvtxn_eta_cent0","",20,1.0,3.0,20,1.0,3.0);
+  th2d_fvtxn_phi_cent0 = new TH2D("th2d_fvtxn_phi_cent0","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
+  th2d_fvtxs_gap_phi_cent0 = new TH2D("th2d_fvtxs_gap_phi_cent0","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
+  th2d_fvtxn_gap_phi_cent0 = new TH2D("th2d_fvtxn_gap_phi_cent0","",20,-pi/4,3*pi/4,20,-pi/4,3*pi/4);
+
 
 
   // ---------------------------------------------------------------------------------------------------------
