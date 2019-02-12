@@ -418,6 +418,7 @@ int GreensboroCorrelations::EventStuff()
       if ( south ) th1d_fvtxs_phi->Fill(phi);
       if ( north ) th1d_fvtxn_eta->Fill(eta);
       if ( north ) th1d_fvtxn_phi->Fill(phi);
+      int cent = centrality; // should fix this dumb name...
       if ( cent > 0 && cent <= 5 )
         {
           if ( south ) th1d_fvtxs_eta_cent0->Fill(eta);
