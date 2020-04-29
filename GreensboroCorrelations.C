@@ -91,6 +91,13 @@ GreensboroCorrelations::GreensboroCorrelations(): SubsysReco("GREENSBOROCORRELAT
   d_NorthQW = 0;
 
 
+  th1d_cnt_both_phi = NULL;
+  th1d_cnt_east_phi = NULL;
+  th1d_cnt_west_phi = NULL;
+  th1d_cnt_both_phi_high = NULL;
+  th1d_cnt_east_phi_high = NULL;
+  th1d_cnt_west_phi_high = NULL;
+
   th1d_nfvtxt_combinedER = NULL;
   th1d_nfvtxt_combined = NULL;
   th1d_nfvtxt_north = NULL;
