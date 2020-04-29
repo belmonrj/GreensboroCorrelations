@@ -23,6 +23,8 @@
 #include <TFvtxCompactCoordMap.h>
 #include <dAuBES_utils.h>
 
+#include <PHCentralTrack.h>
+#include <PHSnglCentralTrack.h>
 
 
 using namespace std;
@@ -54,55 +56,55 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
   int runnumber = 0;
   RunHeader *rh = findNode::getClass<RunHeader>(topNode, "RunHeader");
   if (!rh)
-  {
-    cout << PHWHERE << " ERROR::RunHeader not found" << endl;
-    return ABORTEVENT;
-  }
+    {
+      cout << PHWHERE << " ERROR::RunHeader not found" << endl;
+      return ABORTEVENT;
+    }
   else
-  {
-    runnumber = rh->get_RunNumber();
-  }
+    {
+      runnumber = rh->get_RunNumber();
+    }
   if ( _verbosity > 1 ) cout << "run number is " << runnumber << endl;
 
   // --- trigger object
   TrigLvl1 *triggers = findNode::getClass<TrigLvl1>(topNode, "TrigLvl1");
   if (!triggers)
-  {
-    cout << PHWHERE << " ERROR::TrigLvl1 not found" << endl;
-    return ABORTEVENT;
-  }
+    {
+      cout << PHWHERE << " ERROR::TrigLvl1 not found" << endl;
+      return ABORTEVENT;
+    }
 
   // --- global object (centrality, bbc charge, etc)
   PHGlobal *global = findNode::getClass<PHGlobal>(topNode, "PHGlobal");
   if (!global)
-  {
-    cout << PHWHERE << " ERROR::PHGlobal not found" << endl;
-    return ABORTEVENT;
-  }
+    {
+      cout << PHWHERE << " ERROR::PHGlobal not found" << endl;
+      return ABORTEVENT;
+    }
 
   // --- event header
   EventHeader *evthead = findNode::getClass<EventHeader>(topNode, "EventHeader");
   if (!evthead)
-  {
-    cout << PHWHERE << " ERROR::EventHeader not found" << endl;
-    return ABORTEVENT;
-  }
+    {
+      cout << PHWHERE << " ERROR::EventHeader not found" << endl;
+      return ABORTEVENT;
+    }
 
   // --- vertex object (bbc event vertex, fvtx event vertex, etc)
   VtxOut *vertexes = findNode::getClass<VtxOut>(topNode, "VtxOut");
   if (!vertexes)
-  {
-    cout << PHWHERE << " ERROR::VtxOut not found" << endl;
-    return ABORTEVENT;
-  }
+    {
+      cout << PHWHERE << " ERROR::VtxOut not found" << endl;
+      return ABORTEVENT;
+    }
 
   // --- fvtx track object
   TFvtxCompactTrkMap* trkfvtx_map = findNode::getClass<TFvtxCompactTrkMap>(topNode, "TFvtxCompactTrkMap");
   if (!trkfvtx_map)
-  {
-    cout << PHWHERE << " No TFvtxCompactTrkMap object !" << endl;
-    return ABORTEVENT;
-  }
+    {
+      cout << PHWHERE << " No TFvtxCompactTrkMap object !" << endl;
+      return ABORTEVENT;
+    }
 
   //---------------------------------------------------------//
   //
@@ -248,16 +250,16 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
       double pz = 1.0 * cos(the);
 
       if ( use_utils )
-	{
-	  // rotate based on beamtilt, need to do both rotations with lab frame coordinates
-	  double pxprime = _utils->rotate_x(px, pz);
-	  double pzprime = _utils->rotate_z(px, pz);
-	  // now reassign px and pz to the new rotated frame coordinates
-	  px = pxprime;
-	  pz = pzprime;
-	  phi = TMath::ATan2(py, px);
-	  the = TMath::ACos(pz / TMath::Sqrt(px * px + py * py + pz * pz));
-	}
+        {
+          // rotate based on beamtilt, need to do both rotations with lab frame coordinates
+          double pxprime = _utils->rotate_x(px, pz);
+          double pzprime = _utils->rotate_z(px, pz);
+          // now reassign px and pz to the new rotated frame coordinates
+          px = pxprime;
+          pz = pzprime;
+          phi = TMath::ATan2(py, px);
+          the = TMath::ACos(pz / TMath::Sqrt(px * px + py * py + pz * pz));
+        }
 
       float vertex_z = zvtx;
       if ( FVTX_Z > -999 ) vertex_z = FVTX_Z;
@@ -373,6 +375,91 @@ int GreensboroCorrelations::process_event(PHCompositeNode *topNode)
            << " ratio " << passratio << endl;
     }
 
+  // --- now CNT stuff...
+
+  PHCentralTrack *ctrk = findNode::getClass<PHCentralTrack>(topNode, "PHCentralTrack");
+  if ( _verbosity > 1 ) cout << "checking on whether to do cnt tracks" << endl;
+  if ( ctrk )
+    {
+      int ntrk = ctrk->get_npart();
+      for ( int itrk = 0; itrk < ntrk; ++itrk)
+        {
+
+          PHSnglCentralTrack *strk = ctrk->get_track(itrk);
+
+          //-- Only use good PHCentralTracks
+          if ( use_utils )
+            {
+              if ( !_utils->is_cnt_track_ok(strk) ) continue;
+            }
+
+          float mom         = strk->get_mom();
+          float zed         = strk->get_zed();
+          int quality       = strk->get_quality();
+          if ( mom < 0.0 || mom > 50.0 ) continue;
+          if ( fabs(zed) < 3.0 || fabs(zed) > 70.0 ) continue;
+          if ( quality != 63 && quality != 31 ) continue;
+
+          float pxo = strk->get_px();
+          float pyo = strk->get_py();
+          float pzo = strk->get_pz();
+
+          // rotate based on beamtilt
+          double px = pxo;
+          double py = pyo;
+          double pz = pzo;
+
+          //cout << "event: " << event << endl;
+          //cout << mom << " " << sqrt(px*px + py*py + pz*pz) << endl;
+          //cout << px << " " << py << " " << pz << endl;
+
+          if ( use_utils )
+            {
+              px = _utils->rotate_x(pxo, pzo);
+              pz = _utils->rotate_z(pxo, pzo);
+            }
+
+          //cout << mom << " " << sqrt(px*px + py*py + pz*pz) << endl;
+
+          int charge = strk->get_charge();
+          if ( fabs(charge) > 5 ) continue;
+          short dcarm = strk->get_dcarm();
+
+          float pc3dphi = strk->get_pc3dphi();
+          float pc3dz = strk->get_pc3dz();
+
+          if ( pc3dphi < -9990 || pc3dz < -9990 ) continue;
+
+          float pc3sdphi = strk->get_pc3sdphi();
+          float pc3sdz = strk->get_pc3sdz();
+
+          if ( fabs(pc3sdphi) > 3.0 || fabs(pc3sdz) > 3.0 ) continue;
+
+          // add histograms here...
+
+          float rotated_mom  = sqrt(px*px + py*py + pz*pz);
+          if ( rotated_mom < 0.0 || rotated_mom > 50.0 ) continue;
+          float phi0 = TMath::ATan2(py,px);
+          float pT  = sqrt(px*px + py*py);
+
+          // a dumb thing just to avoid the compiler error about pz
+
+          th1d_cnt_both_phi->Fill(phi0);
+          if ( dcarm == 0 ) th1d_cnt_east_phi->Fill(phi0);
+          if ( dcarm == 1 ) th1d_cnt_west_phi->Fill(phi0);
+          if ( pT > 1 )
+            {
+              th1d_cnt_both_phi_high->Fill(phi0);
+              if ( dcarm == 0 ) th1d_cnt_east_phi_high->Fill(phi0);
+              if ( dcarm == 1 ) th1d_cnt_west_phi_high->Fill(phi0);
+            }
+
+        } // loop over tracks
+
+    } // check on track pointer
+
+
+
   // --- do the analysis
   EventStuff();
 
@@ -484,4 +571,3 @@ int GreensboroCorrelations::EventStuff()
   return EVENT_OK;
 
 } // end of EventStuff
-

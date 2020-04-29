@@ -35,6 +35,13 @@ int GreensboroCorrelations::Init(PHCompositeNode *topNode)
   // --- initialize histograms
   // ---
 
+  th1d_cnt_both_phi = new TH1D("th1d_cnt_both_phi","",640,-3.2,3.2);
+  th1d_cnt_east_phi = new TH1D("th1d_cnt_east_phi","",640,-3.2,3.2);
+  th1d_cnt_west_phi = new TH1D("th1d_cnt_west_phi","",640,-3.2,3.2);
+  th1d_cnt_both_phi_high = new TH1D("th1d_cnt_both_phi_high","",640,-3.2,3.2);
+  th1d_cnt_east_phi_high = new TH1D("th1d_cnt_east_phi_high","",640,-3.2,3.2);
+  th1d_cnt_west_phi_high = new TH1D("th1d_cnt_west_phi_high","",640,-3.2,3.2);
+
   th1d_nfvtxt_combinedER = new TH1D("th1d_nfvtxt_combinedER","",5000, -0.5, 4999.5);
   th1d_nfvtxt_combined = new TH1D("th1d_nfvtxt_combined","",700, -0.5, 699.5);
   th1d_centrality = new TH1D("th1d_centrality","",100, -0.5, 99.5);
@@ -137,11 +144,9 @@ int GreensboroCorrelations::InitRun(PHCompositeNode *topNode)
       _collsys = "Run14AuAu200";
       use_utils = false;
     }
+  // --- Run14HeuAu200
   if ( runnumber >= 415370 && runnumber <= 416893 )
-    {
       _collsys = "Run14HeAu200";
-      use_utils = false;
-    }
   // --- Run15pAu200
   if ( runnumber >= 432637 && runnumber <= 436647 )
     _collsys = "Run15pAu200";

@@ -175,6 +175,13 @@ class GreensboroCorrelations: public SubsysReco
   // --- Histograms
   // ------------------------------------------
 
+  TH1D* th1d_cnt_both_phi;
+  TH1D* th1d_cnt_east_phi;
+  TH1D* th1d_cnt_west_phi;
+  TH1D* th1d_cnt_both_phi_high;
+  TH1D* th1d_cnt_east_phi_high;
+  TH1D* th1d_cnt_west_phi_high;
+
   TH1D* th1d_nfvtxt_combinedER;
   TH1D* th1d_nfvtxt_combined;
   TH1D* th1d_nfvtxt_north;
